@@ -35,18 +35,17 @@
                 </div>
               </div>
 
-              <div class="bottom-area d-flex px-3">
-                <div class="m-auto d-flex">
-                  <form>
-                    <input type="hidden" name="quantity" value="1">
-                    <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
-
-                    <a onclick="addToCart(<?= $product['id']; ?>);" href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
-                      <span><i class="ion-ios-cart"></i> Add To Cart</span>
-                    </a>
-                  </form>
+              <?php if (!$product['in_cart']) : ?>
+                <div class="bottom-area d-flex px-3" id="<?= 'product-' . $product['id']; ?>">
+                  <div class="m-auto d-flex">
+                    <form>
+                      <button onclick="addToCart(<?= $product['id']; ?>);" type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
+                        <span><i class="ion-ios-cart"></i> Add To Cart</span>
+                        </a>
+                    </form>
+                  </div>
                 </div>
-              </div>
+              <?php endif; ?>
 
             </div>
           </div>
@@ -63,16 +62,19 @@
 
 <script>
   function addToCart(product_id) {
-    // $.ajax({
-    //   url: "<?= base_url('/cart') ?>",
-    //   type: "POST",
-    //   data: {
-    //     id_produk: product_id,
-    //     quantity: 1
-    //   }
-    // }).done(function(data) {
-    //   refresh_count();
-    // });
+    $.ajax({
+      url: "<?= base_url('/cart') ?>",
+      type: "POST",
+      data: {
+        product_id: product_id,
+        quantity: 1
+      }
+    }).done(function(data) {
+      refresh_count();
+      if ($('#product-' + product_id)) {
+        $('#product-' + product_id).remove()
+      }
+    });
   };
 </script>
 

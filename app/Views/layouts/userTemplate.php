@@ -230,9 +230,10 @@
     var refresh_count = () => {
       $.ajax({
         url: "<?php echo base_url('/cart/get_sum') ?>",
-        type: "POST",
+        type: "GET",
+        dataType: "json",
       }).done(function(data) {
-        $('#cart-count').html("[" + data + "]")
+        $('#cart-count').html("[" + data.total + "]")
       });
     }
     refresh_count();

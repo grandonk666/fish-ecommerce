@@ -40,6 +40,7 @@ class Autoload extends AutoloadConfig
 	 * @var array<string, string>
 	 */
 	public $psr4 = [
+		'CodeIgniterCart' => ROOTPATH . 'vendor/jason-napolitano/codeigniter4-cart-module/src',
 		APP_NAMESPACE => APPPATH, // For custom app namespace
 		'Config'      => APPPATH . 'Config',
 	];

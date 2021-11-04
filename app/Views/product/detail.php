@@ -19,40 +19,40 @@
           <?= $product['detail']; ?>
         </p>
 
-        <?php // if($cart->where('id', $product->id)->count()): 
-        ?>
-        <!-- <h5>Already In Cart</h5> -->
-        <?php //else : 
-        ?>
+        <div id="cart-section">
 
-        <form action="<?= base_url('/cart') ?>" method="POST" id="add-to-cart">
-          <?= csrf_field(); ?>
-          <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
+          <?php if ($product['in_cart']) : ?>
+            <h5>Already In Cart</h5>
+          <?php else : ?>
 
-          <div class="row mt-4">
-            <div class="input-group col-md-6 d-flex mb-3">
-              <span class="input-group-btn mr-2">
-                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
-                  <i class="ion-ios-remove"></i>
+            <form action="<?= base_url('/cart') ?>" method="POST" id="add-to-cart">
+              <?= csrf_field(); ?>
+              <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
+
+              <div class="row mt-4">
+                <div class="input-group col-md-6 d-flex mb-3">
+                  <span class="input-group-btn mr-2">
+                    <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                      <i class="ion-ios-remove"></i>
+                    </button>
+                  </span>
+                  <input type="text" id="quantity" value="1" name="quantity" class="form-control input-number" min="1" max="100">
+                  <span class="input-group-btn ml-2">
+                    <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                      <i class="ion-ios-add"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <p>
+                <button type="submit" class="btn btn-black py-3 px-5">
+                  Add to Cart
                 </button>
-              </span>
-              <input type="text" id="quantity" value="1" name="quantity" class="form-control input-number" min="1" max="100">
-              <span class="input-group-btn ml-2">
-                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                  <i class="ion-ios-add"></i>
-                </button>
-              </span>
-            </div>
-          </div>
-          <p>
-            <button type="submit" class="btn btn-black py-3 px-5">
-              Add to Cart
-            </button>
-          </p>
-        </form>
+              </p>
+            </form>
 
-        <?php //endif; 
-        ?>
+          <?php endif; ?>
+        </div>
       </div>
 
 
@@ -87,21 +87,23 @@
               </h3>
               <div class="d-flex">
                 <div class="pricing" style="text-align:center;">
-                  <p class="price"><span>Rp
-                      <?= $product['name']; ?></span>
+                  <p class="price"><span>
+                      Rp <?= number_format($product['price'], 0, ',', '.') ?></span>
                   </p>
                 </div>
               </div>
 
-              <div class="bottom-area d-flex px-3">
-                <div class="m-auto d-flex">
-                  <form>
-                    <a onclick="addToCart(<?= $product['id']; ?>);" href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
-                      <span><i class="ion-ios-cart"></i> Add To Cart</span>
-                    </a>
-                  </form>
+              <?php if (!$product['in_cart']) : ?>
+                <div class="bottom-area d-flex px-3" id="<?= 'product-' . $product['id']; ?>">
+                  <div class="m-auto d-flex">
+                    <form>
+                      <button onclick="addToCart(<?= $product['id']; ?>);" type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
+                        <span><i class="ion-ios-cart"></i> Add To Cart</span>
+                        </a>
+                    </form>
+                  </div>
                 </div>
-              </div>
+              <?php endif; ?>
 
             </div>
           </div>
@@ -118,65 +120,53 @@
 
 <script>
   function addToCart(product_id) {
-    // $.ajax({
-    //   url: "<?= base_url('/cart') ?>",
-    //   type: "POST",
-    //   data: {
-    //     id_produk: product_id,
-    //     quantity: 1
-    //   }
-    // }).done(function(data) {
-    //   refresh_count();
-    // });
+    $.ajax({
+      url: "<?= base_url('/cart') ?>",
+      type: "POST",
+      data: {
+        product_id: product_id,
+        quantity: 1
+      }
+    }).done(function(data) {
+      refresh_count();
+      if ($('#product-' + product_id)) {
+        $('#product-' + product_id).remove()
+      }
+    });
   };
 
   var quantity = 0;
   $('.quantity-right-plus').click(function(e) {
-
-    // Stop acting like a button
     e.preventDefault();
-    // Get the field name
     var quantity = parseInt($('#quantity').val());
-
-    // If is not undefined
-
     $('#quantity').val(quantity + 1);
-
-
-    // Increment
-
   });
 
   $('.quantity-left-minus').click(function(e) {
-    // Stop acting like a button
     e.preventDefault();
-    // Get the field name
     var quantity = parseInt($('#quantity').val());
-
-    // If is not undefined
-
-    // Increment
     if (quantity > 0) {
       $('#quantity').val(quantity - 1);
     }
   });
 
   $('#add-to-cart').submit(function(e) {
-    // e.preventDefault();
+    e.preventDefault();
 
-    // let id_produk = $('[name=id_produk]').val();
-    // let quantity = $('[name=quantity]').val();
+    let product_id = $('[name=product_id]').val();
+    let quantity = $('[name=quantity]').val();
 
-    // $.ajax({
-    //   url: "<?php echo base_url('/cart') ?>",
-    //   type: "POST",
-    //   data: {
-    //     id_produk: id_produk,
-    //     quantity: quantity
-    //   }
-    // }).done(function(data) {
-    //   refresh_count();
-    // });
+    $.ajax({
+      url: "<?php echo base_url('/cart') ?>",
+      type: "POST",
+      data: {
+        product_id: product_id,
+        quantity: quantity
+      }
+    }).done(function(data) {
+      refresh_count();
+      $('#cart-section').html('<h5>Already In Cart</h5>')
+    });
   });
 </script>
 

@@ -34,6 +34,9 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::about');
 
+$routes->get('/cart/get_sum', 'Cart::get_sum');
+$routes->post('/cart', 'Cart::insert');
+
 $routes->get('/product', 'Product::index');
 $routes->get('/product/(:any)', 'Product::detail/$1');
 
