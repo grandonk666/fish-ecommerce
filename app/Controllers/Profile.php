@@ -128,7 +128,7 @@ class Profile extends BaseController
   {
     $transaction = $this->transactionModel->find($transactionId);
     if ($transaction['user_id'] != user_id()) {
-      throw new \Exception("Forbiden");
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
     $transaction['order'] = json_decode($transaction['order'], true);
     $transaction['user'] = $this->userModel->find($transaction['user_id']);
@@ -177,7 +177,7 @@ class Profile extends BaseController
           'pesan' => 'The order is on delivery to your place',
           'pdf' => '',
           'badge' => 'success',
-          'bill' => '',
+          'bill' => '/download/' . $transaction['id'],
         ];
         break;
       case 'Success':
@@ -192,7 +192,7 @@ class Profile extends BaseController
         return [
           'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
           'badge' => 'success',
-          'bill' => '',
+          'bill' => '/download/' . $transaction['id'],
           'pdf' => '',
         ];
         break;

@@ -83,7 +83,7 @@ class AdminTransaction extends BaseController
 
     $data = [
       'title' => 'Detail Transaction',
-      'nav' => 'user_transaction',
+      'nav' => 'admin_transaction',
       'transaction' => $transaction,
       'pesan' => $detail['pesan'],
       'pdf' => $detail['pdf'],
@@ -111,66 +111,66 @@ class AdminTransaction extends BaseController
   {
     $notif = new Notification();
 
-    $transaction = $notif->transaction_status;
+    $status = $notif->transaction_status;
     $type = $notif->payment_type;
     $order_id = $notif->order_id;
     $fraud = $notif->fraud_status;
 
-    $transaksi = $this->transaksiModel->where(['order_id' => $order_id])->first();
+    $transaction = $this->transactionModel->where(['serial_number' => $order_id])->first();
 
-    if ($transaction == 'capture') {
+    if ($status == 'capture') {
       // For credit card transaction, we need to check whether transaction is challenge by FDS or not
       if ($type == 'credit_card') {
         if ($fraud == 'challenge') {
           // TODO set payment status in merchant's database to 'Challenge by FDS'
           $this->transaksiModel->save([
-            'id' => $transaksi['id'],
-            'transaction_status' => 'Challenge by FDS',
+            'id' => $transaction['id'],
+            'status' => 'Challenge by FDS',
           ]);
           // TODO merchant should decide whether this transaction is authorized or not in MAP
           echo "Transaction order_id: " . $order_id . " is challenged by FDS";
         } else {
           // TODO set payment status in merchant's database to 'Success'
           $this->transaksiModel->save([
-            'id' => $transaksi['id'],
-            'transaction_status' => 'Success',
+            'id' => $transaction['id'],
+            'status' => 'Success',
           ]);
           echo "Transaction order_id: " . $order_id . " successfully captured using " . $type;
         }
       }
-    } else if ($transaction == 'settlement') {
+    } else if ($status == 'settlement') {
       // TODO set payment status in merchant's database to 'Settlement'
       $this->transaksiModel->save([
-        'id' => $transaksi['id'],
-        'transaction_status' => 'Settlement',
+        'id' => $transaction['id'],
+        'status' => 'Settlement',
       ]);
       echo "Transaction order_id: " . $order_id . " successfully transfered using " . $type;
-    } else if ($transaction == 'pending') {
+    } else if ($status == 'pending') {
       // TODO set payment status in merchant's database to 'Pending'
       $this->transaksiModel->save([
-        'id' => $transaksi['id'],
-        'transaction_status' => 'Pending',
+        'id' => $transaction['id'],
+        'status' => 'Pending',
       ]);
       echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
-    } else if ($transaction == 'deny') {
+    } else if ($status == 'deny') {
       // TODO set payment status in merchant's database to 'Denied'
       $this->transaksiModel->save([
-        'id' => $transaksi['id'],
-        'transaction_status' => 'Denied',
+        'id' => $transaction['id'],
+        'status' => 'Denied',
       ]);
       echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
-    } else if ($transaction == 'expire') {
+    } else if ($status == 'expire') {
       // TODO set payment status in merchant's database to 'expire'
       $this->transaksiModel->save([
-        'id' => $transaksi['id'],
-        'transaction_status' => 'Expire',
+        'id' => $transaction['id'],
+        'status' => 'Expire',
       ]);
       echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
-    } else if ($transaction == 'cancel') {
+    } else if ($status == 'cancel') {
       // TODO set payment status in merchant's database to 'Denied'
       $this->transaksiModel->save([
-        'id' => $transaksi['id'],
-        'transaction_status' => 'Canceled',
+        'id' => $transaction['id'],
+        'status' => 'Canceled',
       ]);
       echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is canceled.";
     }
@@ -192,7 +192,7 @@ class AdminTransaction extends BaseController
           'pesan' => 'The order is on delivery to your place',
           'pdf' => '',
           'badge' => 'success',
-          'bill' => '',
+          'bill' => '/download/' . $transaction['id'],
         ];
         break;
       case 'Success':
@@ -207,7 +207,7 @@ class AdminTransaction extends BaseController
         return [
           'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
           'badge' => 'success',
-          'bill' => '',
+          'bill' => '/download/' . $transaction['id'],
           'pdf' => '',
         ];
         break;

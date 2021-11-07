@@ -21,7 +21,7 @@
     <nav id="sidebar" class="sidebar d-print-none">
       <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="<?= base_url('/admin'); ?>">
-          Sunset <span class="text-white">Hotel</span>
+          <span class="text-white">Sok Kabeh</span>
         </a>
 
         <ul class="sidebar-nav">
@@ -151,7 +151,7 @@
         <div class="container-fluid">
           <div class="row text-muted">
             <div class="col-6 text-left">
-              <p class="mb-0"><strong>Sunset Hotel</strong>
+              <p class="mb-0"><strong>Sok Kabeh</strong>
                 &copy;
               </p>
             </div>

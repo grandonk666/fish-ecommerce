@@ -47,6 +47,10 @@
             <span><?= $transaction['serial_number']; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
+            <strong>Transaction ID</strong>
+            <span><?= $transaction['transaction_id']; ?></span>
+          </li>
+          <li class="d-flex list-group-item py-3 justify-content-between">
             <strong>Customer Name</strong>
             <span><?= $transaction['user']->name; ?></span>
           </li>
@@ -86,7 +90,7 @@
               <?php endif; ?>
               <?php if ($bill != '') : ?>
                 <p class="h4 text-muted mb-2">You can get your payment bill here</p>
-                <a class="btn btn-primary mb-2" href="<?= base_url('/download/' . $bill) ?>">Download Bill</a>
+                <a class="btn btn-primary mb-2" href="<?= base_url($bill) ?>">Download Bill</a>
               <?php endif; ?>
             </div>
           </div>

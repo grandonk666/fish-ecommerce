@@ -42,6 +42,7 @@ $routes->post('/cart/delete', 'Cart::delete');
 
 $routes->get('/product', 'Product::index');
 $routes->get('/product/(:any)', 'Product::detail/$1');
+$routes->get('/cities', 'Checkout::get_cities');
 
 $routes->get('/checkout', 'Checkout::index');
 $routes->get('/checkout/cities', 'Checkout::get_cities');
@@ -50,6 +51,8 @@ $routes->post('/checkout/token', 'Checkout::get_token');
 $routes->post('/checkout/finish', 'Checkout::finish');
 
 $routes->get('/download/(:num)', 'Home::download/$1');
+
+$routes->post('/transaction/notification', 'AdminTransaction::notification');
 
 $routes->get('/profile', 'Profile::index');
 $routes->get('/profile/settings', 'Profile::edit');

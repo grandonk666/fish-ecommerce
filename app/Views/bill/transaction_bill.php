@@ -12,13 +12,13 @@
   <div style="width: 100%; margin: 0 auto">
     <div style="width: 100%; margin: 0; background-color: #ffffff">
       <h2 style="margin: 0; padding: 10px 0 5px 20px; font-size: 2em">
-        Sunset Hotel
+        Sok Kabeh
       </h2>
       <p style="margin: 0; padding: 5px 0 5px 20px; font-size: 1.6em">
-        IDR <?= number_format($transaksi['gross_amount'], '0', '', '.'); ?>
+        IDR <?= number_format($transaction['total'], '0', '', '.'); ?>
       </p>
       <p style="margin: 0; padding: 5px 0 20px 20px; font-size: 1.2em">
-        <strong><?= $transaksi['payment_type']; ?></strong>
+        <strong><?= $transaction['payment_type']; ?></strong>
       </p>
     </div>
     <div style="width: 100%; background-color: #dddddd; margin: 0">
@@ -28,7 +28,7 @@
             font-size: 0.9em;
             padding: 10px 0 10px 20px;
           ">
-        ORDER ID : <?= $transaksi['order_id']; ?>
+        ORDER ID / SERIAL NUMBER : <?= $transaction['serial_number']; ?>
       </p>
     </div>
     <div style="width: 100%; background-color: #2eca6a; margin: 0">
@@ -49,7 +49,7 @@
             font-size: 1.2em;
             padding: 30px 20px 10px 20px;
           ">
-        Dear <?= $transaksi['customer_name']; ?>,
+        Dear <?= $transaction['user']->name; ?>,
       </p>
       <p style="
             color: #000000;
@@ -68,17 +68,19 @@
           </tr>
         </thead>
         <tbody>
+          <?php foreach ($transaction['order'] as $item) : ?>
+            <tr>
+              <td style="text-align: left;">
+                <?= $item['name']; ?> <strong>x</strong> <?= $item['quantity']; ?>
+              </td>
+              <td style="text-align: right;">
+                Rp <?= number_format($item['quantity'] * $item['price'], '0', '', '.') ?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
           <tr>
-            <td style="text-align: left; border-bottom: 1px solid #a1a1a1">
-              <?= $transaksi['item_name']; ?>
-            </td>
-            <td style="text-align: right; border-bottom: 1px solid #a1a1a1">
-              IDR <?= number_format($transaksi['gross_amount'], '0', '', '.'); ?>
-            </td>
-          </tr>
-          <tr>
-            <th style="height: 40px; text-align: left">TOTAL</th>
-            <th style="height: 40px; text-align: right">IDR <?= number_format($transaksi['gross_amount'], '0', '', '.'); ?></th>
+            <th style="height: 40px; text-align: left; border-top: 1px solid #a1a1a1">TOTAL</th>
+            <th style="height: 40px; text-align: right; border-top: 1px solid #a1a1a1">Rp <?= number_format($transaction['total'], '0', '', '.'); ?></th>
           </tr>
         </tbody>
       </table>
@@ -119,7 +121,7 @@
             padding: 0 0 10px 0;
           ">
         email:
-        <span style="color: rgb(107, 139, 235)">18081010095.c@gmail.com</span>
+        <span style="color: rgb(107, 139, 235)">trikurniawan02091998@gmail.com</span>
         | phone: <span style="color: rgb(107, 139, 235)">+6285730187977</span>
       </p>
     </div>
