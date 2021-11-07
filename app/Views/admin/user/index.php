@@ -6,7 +6,7 @@
   <h1 class="h3 mb-3"><?= $title; ?></h1>
 
   <div class="row">
-    <div class="col-12 col-lg-9 col-xxl-9">
+    <div class="col-12 col-lg-10 col-xxl-10">
 
       <?php if (session()->getFlashdata('pesan')) : ?>
         <div class="alert alert-success alert-dismissible" role="alert">
@@ -24,50 +24,51 @@
         <table class="table">
           <thead>
             <tr>
-              <th style="width: 30%">Nama</th>
-              <th style="width: 30%">Email</th>
+              <th style="width: 25%">Nama</th>
+              <th style="width: 35%">Email</th>
               <th style="width: 10%">Role</th>
-              <th>Aksi</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($user as $u) : ?>
+            <?php foreach ($users as $user) : ?>
               <tr>
-                <td><?= $u->name; ?></td>
+                <td><?= $user->name; ?></td>
                 <td>
-                  <?= $u->email; ?>
+                  <?= $user->email; ?>
                 </td>
                 <td>
-                  <span class="badge <?= ($u->getRoles()[0]['name'] == 'admin') ? 'bg-primary' : 'bg-success' ?>">
-                    <?= $u->getRoles()[0]['name']; ?>
-                  </span>
+                  <?php if ($user->id == user_id()) : ?>
+                    <span class="text-uppercase badge bg-secondary">
+                      Current User
+                    </span>
+                  <?php else : ?>
+                    <span class="text-uppercase badge <?= ($user->getRoles()[0]['name'] == 'admin') ? 'bg-primary' : 'bg-success' ?>">
+                      <?= $user->getRoles()[0]['name']; ?>
+                    </span>
+                  <?php endif; ?>
                 </td>
                 <td class="table-action">
-                  <a href="<?= base_url("/admin/user/" . $u->id); ?>" class="btn btn-outline"><i class="align-middle" data-feather="eye"></i></a>
-                  <form action="<?= base_url("/admin/user/" . $u->id); ?>" method="post" class="d-inline">
-                    <?= csrf_field(); ?>
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-outline" type="submit" onclick="return confirm('Anda yakin ?');"><i class="align-middle" data-feather="trash"></i></button>
-                  </form>
+                  <?php if ($user->id != user_id()) : ?>
+                    <?php if ($user->getRoles()[0]['name'] == 'user') : ?>
 
-                  <?php if ($u->getRoles()[0]['name'] == 'user') : ?>
+                      <form action="<?= base_url("/admin/user/role/" . $user->id); ?>" method="post" class="d-none d-xl-inline">
+                        <?= csrf_field(); ?>
 
-                    <form action="<?= base_url("/admin/user/role/" . $u->id); ?>" method="post" class="d-none d-xl-inline">
-                      <?= csrf_field(); ?>
+                        <input type="hidden" name="role" value="admin">
+                        <button class="btn btn-sm btn-info" type="submit">Set to Admin</button>
+                      </form>
 
-                      <input type="hidden" name="role" value="admin">
-                      <button class="btn btn-sm btn-info" type="submit">Set to Admin</button>
-                    </form>
+                    <?php else : ?>
 
-                  <?php else : ?>
+                      <form action="<?= base_url("/admin/user/role/" . $user->id); ?>" method="post" class="d-none d-xl-inline">
+                        <?= csrf_field(); ?>
 
-                    <form action="<?= base_url("/admin/user/role/" . $u->id); ?>" method="post" class="d-none d-xl-inline">
-                      <?= csrf_field(); ?>
+                        <input type="hidden" name="role" value="user">
+                        <button class="btn btn-sm btn-success" type="submit">Set to Regular User</button>
+                      </form>
 
-                      <input type="hidden" name="role" value="user">
-                      <button class="btn btn-sm btn-success" type="submit">Set to User</button>
-                    </form>
-
+                    <?php endif; ?>
                   <?php endif; ?>
 
                 </td>

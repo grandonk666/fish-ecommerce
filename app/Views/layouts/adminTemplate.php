@@ -30,34 +30,28 @@
             <li class="sidebar-header">
               Administrator
             </li>
-            <li class="sidebar-item <?= ($nav == 'dashboard') ? 'active' : '' ?>">
-              <a class="sidebar-link" href="<?= base_url('/admin'); ?>">
-                <i class="align-middle" data-feather="activity"></i>
-                <span class="align-middle">Dashboard</span>
-              </a>
-            </li>
-            <li class="sidebar-item <?= ($nav == 'kamar') ? 'active' : '' ?>">
-              <a class="sidebar-link" href="<?= base_url('/admin/kamar'); ?>">
+            <li class="sidebar-item <?= ($nav == 'product') ? 'active' : '' ?>">
+              <a class="sidebar-link" href="<?= base_url('/admin/product'); ?>">
                 <i class="align-middle" data-feather="database"></i>
-                <span class="align-middle">Daftar Kamar</span>
+                <span class="align-middle">Products</span>
               </a>
             </li>
-            <li class="sidebar-item <?= ($nav == 'ruangan') ? 'active' : '' ?>">
-              <a class="sidebar-link" href="<?= base_url('/admin/ruangan'); ?>">
+            <li class="sidebar-item <?= ($nav == 'category') ? 'active' : '' ?>">
+              <a class="sidebar-link" href="<?= base_url('/admin/category'); ?>">
                 <i class="align-middle" data-feather="layers"></i>
-                <span class="align-middle">Daftar Ruangan</span>
+                <span class="align-middle">Categories</span>
               </a>
             </li>
-            <li class="sidebar-item <?= ($nav == 'transaksi') ? 'active' : '' ?>">
-              <a class="sidebar-link" href="<?= base_url('/admin/transaksi'); ?>">
+            <li class="sidebar-item <?= ($nav == 'admin_transaction') ? 'active' : '' ?>">
+              <a class="sidebar-link" href="<?= base_url('/admin/transaction'); ?>">
                 <i class="align-middle" data-feather="dollar-sign"></i>
-                <span class="align-middle">Data Transaksi</span>
+                <span class="align-middle">Transactions</span>
               </a>
             </li>
             <li class="sidebar-item <?= ($nav == 'user') ? 'active' : '' ?>">
               <a class="sidebar-link" href="<?= base_url('/admin/user'); ?>">
                 <i class="align-middle" data-feather="users"></i>
-                <span class="align-middle">Data User</span>
+                <span class="align-middle">User Managment</span>
               </a>
             </li>
           <?php endif; ?>
@@ -65,16 +59,16 @@
           <li class="sidebar-header">
             User
           </li>
-          <li class="sidebar-item <?= ($nav == 'profil') ? 'active' : '' ?>">
+          <li class="sidebar-item <?= ($nav == 'profile') ? 'active' : '' ?>">
             <a class="sidebar-link" href="<?= base_url('/profile'); ?>">
               <i class="align-middle" data-feather="user"></i>
               <span class="align-middle">Profil</span>
             </a>
           </li>
-          <li class="sidebar-item <?= ($nav == 'transaksi user') ? 'active' : '' ?>">
-            <a class="sidebar-link" href="<?= base_url('/profile/transaksi'); ?>">
+          <li class="sidebar-item <?= ($nav == 'user_transaction') ? 'active' : '' ?>">
+            <a class="sidebar-link" href="<?= base_url('/profile/transaction'); ?>">
               <i class="align-middle" data-feather="maximize-2"></i>
-              <span class="align-middle">Transaksi User</span>
+              <span class="align-middle">My Transaction</span>
             </a>
           </li>
           <li class="sidebar-item <?= ($nav == 'settings') ? 'active' : '' ?>">

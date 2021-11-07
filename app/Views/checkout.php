@@ -51,6 +51,13 @@
               </select>
             </div>
           </div>
+          <div class="w-100"></div>
+          <div class="col-md-12">
+            <div class="form-group" id="postal-section">
+              <label for="code">Postal Code</label>
+              <input type="text" name="code" required class="form-control" style="color:black !important" id="code" value="<?= old('code') ?>">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -99,15 +106,19 @@
   <input type="hidden" name="province_id">
   <input type="hidden" name="city">
   <input type="hidden" name="city_id">
+  <input type="hidden" name="postal_code">
   <input type="hidden" name="delivery_address">
   <input type="hidden" name="delivery_cost">
   <input type="hidden" name="delivery_service">
   <input type="hidden" name="result_data">
+  <input type="hidden" name="list_items">
 </form>
 
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
+
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-ZK2Q4mMwnOvnPZFO"></script>
 
 <script>
   $(document).ready(function() {
@@ -118,12 +129,23 @@
       let deliveryService = $('input[name="delivery_service"]').val()
       let deliveryAddress = $('input[name="address"]').val()
       let city = $('input[name="city"]').val()
+      let code = $('input[name="code"]').val()
 
       if (!deliveryAddress) {
         $('input[name="address"]').addClass('is-invalid')
         $('#address-section').append(
           `<div class="invalid-feedback">
               Input the Delivery Address Detail
+            </div>`
+        )
+        return
+      }
+
+      if (!code) {
+        $('input[name="code"]').addClass('is-invalid')
+        $('#postal-section').append(
+          `<div class="invalid-feedback">
+              Input the Postal Code
             </div>`
         )
         return
@@ -147,7 +169,14 @@
 
       $.ajax({
         url: `/checkout/token?delivery_cost=${deliveryCost}&delivery_service=${deliveryService}&city=${city}`,
-        type: "GET",
+        type: "POST",
+        data: {
+          delivery_cost: deliveryCost,
+          delivery_service: deliveryService,
+          city: city,
+          delivery_address: deliveryAddress,
+          postal_code: code
+        },
         dataType: "json",
         success: function(response) {
           console.log(response)
@@ -156,18 +185,25 @@
               $('input[name="result_data"]').val(JSON
                 .stringify(result, null, 2))
               $('input[name="delivery_address"]').val(deliveryAddress)
+              $('input[name="postal_code"]').val(code)
+              $('input[name="list_items"]').val(response.list_items)
               $('#finish-form').submit()
             },
             onPending: function(result) {
               $('input[name="result_data"]').val(JSON
                 .stringify(result, null, 2))
               $('input[name="delivery_address"]').val(deliveryAddress)
+              $('input[name="postal_code"]').val(code)
+              $('input[name="list_items"]').val(JSON
+                .stringify(response.list_items, null, 2))
               $('#finish-form').submit()
             },
             onError: function(result) {
               $('input[name="result_data"]').val(JSON
                 .stringify(result, null, 2))
               $('input[name="delivery_address"]').val(deliveryAddress)
+              $('input[name="postal_code"]').val(code)
+              $('input[name="list_items"]').val(response.list_items)
               $('#finish-form').submit()
             }
           });

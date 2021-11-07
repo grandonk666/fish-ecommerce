@@ -50,6 +50,18 @@ class CreateTransactionsTable extends Migration
                 'constraint' => '100',
                 'null' => true
             ],
+            'province' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'city' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'address' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'delivery_service' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
@@ -57,6 +69,9 @@ class CreateTransactionsTable extends Migration
             'delivery_cost'       => [
                 'type'       => 'INT',
                 'constraint' => 11,
+            ],
+            'order'       => [
+                'type'       => 'LONGTEXT',
             ],
             'total'       => [
                 'type'       => 'INT',

@@ -46,19 +46,20 @@ $routes->get('/product/(:any)', 'Product::detail/$1');
 $routes->get('/checkout', 'Checkout::index');
 $routes->get('/checkout/cities', 'Checkout::get_cities');
 $routes->get('/checkout/costs', 'Checkout::get_costs');
-$routes->get('/checkout/token', 'Checkout::get_token');
+$routes->post('/checkout/token', 'Checkout::get_token');
 $routes->post('/checkout/finish', 'Checkout::finish');
 
 $routes->get('/download/(:num)', 'Home::download/$1');
 
-$routes->get('/profile', 'Profil::index');
-$routes->get('/profile/settings', 'Profil::edit');
-$routes->get('/profile/transaksi', 'Profil::transaksi');
-$routes->post('/profile/transaksi', 'Profil::transaksi');
-$routes->get('/profile/order/(:num)', 'Profil::order/$1');
+$routes->get('/profile', 'Profile::index');
+$routes->get('/profile/settings', 'Profile::edit');
+$routes->get('/profile/transaction', 'Profile::transaction');
+$routes->get('/profile/transaction/(:num)', 'Profile::transaction_detail/$1');
 
 $routes->group('/admin', ['filter' => 'role:admin'], function ($routes) {
-	$routes->get('/', 'Dashboard::index');
+	$routes->get('/', function () {
+		return redirect()->to('/admin/product');
+	});
 
 	$routes->get('product', 'AdminProduct::index');
 	$routes->post('product/save', 'AdminProduct::save');
@@ -76,13 +77,12 @@ $routes->group('/admin', ['filter' => 'role:admin'], function ($routes) {
 	$routes->delete('category/(:num)', 'AdminCategory::delete/$1');
 	$routes->get('category/(:any)', 'AdminCategory::detail/$1');
 
-	$routes->get('transaksi', 'Transaksi::index');
-	$routes->post('transaksi', 'Transaksi::index');
+	$routes->post('transaction/reciept', 'AdminTransaction::reciept');
+	$routes->get('transaction', 'AdminTransaction::index');
+	$routes->get('transaction/(:num)', 'AdminTransaction::detail/$1');
 
-	$routes->get('user', 'User::index');
-	$routes->get('user/(:num)', 'User::detail/$1');
-	$routes->post('user/role/(:num)', 'User::role/$1');
-	$routes->delete('user/(:num)', 'User::delete/$1');
+	$routes->get('user', 'AdminUser::index');
+	$routes->post('user/role/(:num)', 'AdminUser::role/$1');
 });
 
 

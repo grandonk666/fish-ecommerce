@@ -114,15 +114,10 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= user()->firstname ?></a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="<?= base_url('/admin/profile/transaction') ?>">Order
+                <a class="dropdown-item" href="<?= base_url('/profile/transaction') ?>">Order
                   Transaction</a>
-                <a class="dropdown-item" href="<?= base_url('/admin/profile') ?>">Profile</a>
-                <form action="<?= base_url('/logout') ?>" method="post">
-                  <?= csrf_field(); ?>
-                  <button type="submit" class="dropdown-item" style="cursor: pointer">
-                    Logout
-                  </button>
-                </form>
+                <a class="dropdown-item" href="<?= base_url('/profile') ?>">Profile</a>
+                <a class="dropdown-item" href="<?= base_url('/logout') ?>">Logout</a>
               </div>
             </li>
           <?php else : ?>
