@@ -44,6 +44,8 @@ $routes->get('/product', 'Product::index');
 $routes->get('/product/(:any)', 'Product::detail/$1');
 
 $routes->get('/checkout', 'Checkout::index');
+$routes->get('/checkout/cities', 'Checkout::get_cities');
+$routes->get('/checkout/costs', 'Checkout::get_costs');
 $routes->get('/checkout/token', 'Checkout::get_token');
 $routes->post('/checkout/finish', 'Checkout::finish');
 
