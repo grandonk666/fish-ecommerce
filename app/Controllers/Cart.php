@@ -13,6 +13,16 @@ class Cart extends BaseController
     $this->cart = \Config\Services::cart();
   }
 
+  public function index()
+  {
+    $data = [
+      'cart' => $this->cart->contents(),
+      'subtotal' => $this->cart->total()
+    ];
+
+    return view('cart', $data);
+  }
+
   public function get_sum()
   {
     $data = [
@@ -30,8 +40,26 @@ class Cart extends BaseController
       'qty'     => $this->request->getVar('quantity'),
       'price'   => $product['price'],
       'name'    => $product['name'],
+      'options' => ['image' => $product['image']]
     ));
 
     return $this->response->setStatusCode(200, 'Added to cart');
+  }
+
+  public function update()
+  {
+    $this->cart->update([
+      'rowid' => $this->request->getVar('rowid'),
+      'qty' => $this->request->getVar('quantity'),
+    ]);
+
+    return redirect()->to('/cart');
+  }
+
+  public function delete()
+  {
+    $this->cart->remove($this->request->getVar('rowid'));
+
+    return redirect()->to('/cart');
   }
 }

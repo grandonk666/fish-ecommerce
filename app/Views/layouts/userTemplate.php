@@ -130,7 +130,7 @@
           <?php endif; ?>
 
           <li class="nav-item cta cta-colored">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('/cart') ?>" class="nav-link">
               <span class="icon-shopping_cart"></span>
               <span id="cart-count">
                 [0]
