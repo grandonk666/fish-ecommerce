@@ -12,8 +12,6 @@ class AdminTransaction extends BaseController
   public function __construct()
   {
     $this->userModel = new UserModel();
-    // $this->kamarModel = new KamarModel();
-    // $this->ruanganModel = new RuanganModel();
     $this->transactionModel = new TransactionModel();
   }
 
@@ -109,7 +107,9 @@ class AdminTransaction extends BaseController
 
   public function notification()
   {
-    $notif = new Notification();
+    \Midtrans\Config::$isProduction = false;
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-nDv_Z65iSjuX0xw6zXK6MeuD';
+    $notif = new \Midtrans\Notification();
 
     $status = $notif->transaction_status;
     $type = $notif->payment_type;
@@ -123,7 +123,7 @@ class AdminTransaction extends BaseController
       if ($type == 'credit_card') {
         if ($fraud == 'challenge') {
           // TODO set payment status in merchant's database to 'Challenge by FDS'
-          $this->transaksiModel->save([
+          $this->transactionModel->save([
             'id' => $transaction['id'],
             'status' => 'Challenge by FDS',
           ]);
@@ -131,7 +131,7 @@ class AdminTransaction extends BaseController
           echo "Transaction order_id: " . $order_id . " is challenged by FDS";
         } else {
           // TODO set payment status in merchant's database to 'Success'
-          $this->transaksiModel->save([
+          $this->transactionModel->save([
             'id' => $transaction['id'],
             'status' => 'Success',
           ]);
@@ -140,35 +140,35 @@ class AdminTransaction extends BaseController
       }
     } else if ($status == 'settlement') {
       // TODO set payment status in merchant's database to 'Settlement'
-      $this->transaksiModel->save([
+      $this->transactionModel->save([
         'id' => $transaction['id'],
         'status' => 'Settlement',
       ]);
       echo "Transaction order_id: " . $order_id . " successfully transfered using " . $type;
     } else if ($status == 'pending') {
       // TODO set payment status in merchant's database to 'Pending'
-      $this->transaksiModel->save([
+      $this->transactionModel->save([
         'id' => $transaction['id'],
         'status' => 'Pending',
       ]);
       echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
     } else if ($status == 'deny') {
       // TODO set payment status in merchant's database to 'Denied'
-      $this->transaksiModel->save([
+      $this->transactionModel->save([
         'id' => $transaction['id'],
         'status' => 'Denied',
       ]);
       echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
     } else if ($status == 'expire') {
       // TODO set payment status in merchant's database to 'expire'
-      $this->transaksiModel->save([
+      $this->transactionModel->save([
         'id' => $transaction['id'],
         'status' => 'Expire',
       ]);
       echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
     } else if ($status == 'cancel') {
       // TODO set payment status in merchant's database to 'Denied'
-      $this->transaksiModel->save([
+      $this->transactionModel->save([
         'id' => $transaction['id'],
         'status' => 'Canceled',
       ]);
