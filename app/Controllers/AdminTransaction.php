@@ -189,16 +189,16 @@ class AdminTransaction extends BaseController
         break;
       case 'On Delivery':
         return [
-          'pesan' => 'The order is on delivery to your place',
+          'pesan' => 'The order is on delivery to your place. This is the reciept number : ',
           'pdf' => '',
           'badge' => 'success',
-          'bill' => '/download/' . $transaction['id'],
+          'bill' => '',
         ];
         break;
       case 'Success':
         return [
           'pesan' => 'The order is on proccessing',
-          'pdf' => $transaction['pdf_url'],
+          'pdf' => $transaction['pdf_url'] ?? '',
           'badge' => 'primary',
           'bill' => '',
         ];
@@ -208,6 +208,30 @@ class AdminTransaction extends BaseController
           'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
           'badge' => 'success',
           'bill' => '/download/' . $transaction['id'],
+          'pdf' => '',
+        ];
+        break;
+      case 'Waiting Approvement':
+        return [
+          'pesan' => 'The order is stil waiting an approvement from the store',
+          'badge' => 'info',
+          'bill' => '',
+          'pdf' => '',
+        ];
+        break;
+      case 'Waiting Payment':
+        return [
+          'pesan' => 'The order is waiting to be paid, please pay immediately',
+          'badge' => 'warning',
+          'bill' => '',
+          'pdf' => '',
+        ];
+        break;
+      case 'Checking Payment':
+        return [
+          'pesan' => 'The order is waiting for payment check',
+          'badge' => 'primary',
+          'bill' => '',
           'pdf' => '',
         ];
         break;
@@ -221,7 +245,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Denied':
         return [
-          'pesan' => 'The order has been denied, please try to reorder',
+          'pesan' => 'The order has been denied, please try to reorder or contact the customer service',
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',

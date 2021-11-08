@@ -2,16 +2,20 @@
 
 namespace App\Controllers;
 
+use App\Models\InternationalTransactionModel;
+use App\Models\ProductModel;
 use App\Models\TransactionModel;
 use Myth\Auth\Models\UserModel;
 
 class Profile extends BaseController
 {
-  protected $userModel, $transactionModel;
+  protected $userModel, $transactionModel, $internatioanalTransactionModel, $productModel;
   public function __construct()
   {
     $this->userModel = new UserModel();
+    $this->productModel = new ProductModel();
     $this->transactionModel = new TransactionModel();
+    $this->internatioanalTransactionModel = new InternationalTransactionModel();
   }
 
   public function index()
@@ -44,7 +48,6 @@ class Profile extends BaseController
       'firstname'    => 'required|alpha_numeric_space|min_length[3]',
       'lastname'    => 'required|alpha_numeric_space|min_length[3]',
       'phone'    => 'required|numeric|min_length[3]',
-      'image' => 'max_size[user_image,1024]|is_image[user_image]|mime_in[user_image,image/jpg,image/jpeg,image/png]'
     ];
 
     if (!$this->validate($rules)) {
@@ -57,12 +60,11 @@ class Profile extends BaseController
       'firstname' => $this->request->getVar('firstname'),
       'lastname' => $this->request->getVar('lastname'),
       'phone' => $this->request->getVar('phone'),
-      'user_image' => $this->getFoto($this->request->getFile('user_image')),
     ];
 
     $this->userModel->save($data);
 
-    session()->setFlashdata('pesan', 'Data berhasil diubah');
+    session()->setFlashdata('success', 'Profile Updated');
 
     return redirect()->to('/profile');
   }
@@ -147,6 +149,80 @@ class Profile extends BaseController
     return view('transaction/detail', $data);
   }
 
+  public function international_transaction()
+  {
+    $dataTransactions = $this->internatioanalTransactionModel->getUserTransaction(user_id());
+    $dataUsers = $this->userModel->findAll();
+    $dataProducts = $this->productModel->findAll();
+
+    $transactions = array_map(function ($transaction) use ($dataUsers, $dataProducts) {
+      $userIndex = array_search($transaction['user_id'], array_column($dataUsers, 'id'));
+      $transaction['user'] = $dataUsers[$userIndex];
+
+      $productIndex = array_search($transaction['product_id'], array_column($dataProducts, 'id'));
+      $transaction['product'] = $dataProducts[$productIndex];
+
+      return $transaction;
+    }, $dataTransactions);
+
+
+    foreach ($transactions as $trx => $t) {
+      switch ($transactions[$trx]['status']) {
+        case 'Waiting Approvement':
+          $transactions[$trx]['badge'] = 'info';
+          break;
+        case 'Waiting Payment':
+          $transactions[$trx]['badge'] = 'warning';
+          break;
+        case 'Checking Payment':
+          $transactions[$trx]['badge'] = 'primary';
+          break;
+        case 'On Delivery':
+          $transactions[$trx]['badge'] = 'success';
+          break;
+        case 'Denied':
+          $transactions[$trx]['badge'] = 'danger';
+          break;
+
+        default:
+          $transactions[$trx]['badge'] = 'info';
+          break;
+      }
+    }
+
+    $data = [
+      'nav' => 'user_international',
+      'title' => 'User International Transaction',
+      'transactions' => $transactions,
+    ];
+
+    return view('transaction/international', $data);
+  }
+
+  public function international_detail($id)
+  {
+    $transaction = $this->internatioanalTransactionModel->find($id);
+    if ($transaction['user_id'] != user_id()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+    $transaction['product'] = $this->productModel->find($transaction['product_id']);
+    $transaction['user'] = $this->userModel->find($transaction['user_id']);
+    $detail = $this->getTransactionDetail($transaction);
+
+    $data = [
+      'title' => 'Detail Transaction',
+      'nav' => 'user_international',
+      'validation' => \Config\Services::validation(),
+      'transaction' => $transaction,
+      'pesan' => $detail['pesan'],
+      'pdf' => $detail['pdf'],
+      'bill' => $detail['bill'],
+      'badge' => $detail['badge'],
+    ];
+
+    return view('transaction/international_detail', $data);
+  }
+
   public function getFoto($fileFoto)
   {
     if ($fileFoto->getError() == 4) {
@@ -177,13 +253,13 @@ class Profile extends BaseController
           'pesan' => 'The order is on delivery to your place',
           'pdf' => '',
           'badge' => 'success',
-          'bill' => '/download/' . $transaction['id'],
+          'bill' => '',
         ];
         break;
       case 'Success':
         return [
           'pesan' => 'The order is on proccessing',
-          'pdf' => $transaction['pdf_url'],
+          'pdf' => $transaction['pdf_url'] ?? '',
           'badge' => 'primary',
           'bill' => '',
         ];
@@ -193,6 +269,30 @@ class Profile extends BaseController
           'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
           'badge' => 'success',
           'bill' => '/download/' . $transaction['id'],
+          'pdf' => '',
+        ];
+        break;
+      case 'Waiting Approvement':
+        return [
+          'pesan' => 'The order is stil waiting an approvement from the store',
+          'badge' => 'info',
+          'bill' => '',
+          'pdf' => '',
+        ];
+        break;
+      case 'Waiting Payment':
+        return [
+          'pesan' => 'The order is waiting to be paid, please pay immediately',
+          'badge' => 'warning',
+          'bill' => '',
+          'pdf' => '',
+        ];
+        break;
+      case 'Checking Payment':
+        return [
+          'pesan' => 'The order is waiting for payment check',
+          'badge' => 'primary',
+          'bill' => '',
           'pdf' => '',
         ];
         break;
@@ -206,7 +306,7 @@ class Profile extends BaseController
         break;
       case 'Denied':
         return [
-          'pesan' => 'The order has been denied, please try to reorder',
+          'pesan' => 'The order has been denied, please try to reorder or contact the customer service',
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',

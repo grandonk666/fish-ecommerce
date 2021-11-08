@@ -86,7 +86,7 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aliquid
             dolorum voluptatibus, expedita omnis numquam animi quae totam
             pariatur fugit!</p>
-          <p><a href="#" class="btn btn-primary">Shop now</a></p>
+          <p><a href="<?= base_url('/product') ?>" class="btn btn-primary">Shop now</a></p>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aliquid
             dolorum voluptatibus, expedita omnis numquam animi quae totam
             pariatur fugit!</p>
-          <p><a href="#" class="btn btn-primary">Shop now</a></p>
+          <p><a href="<?= base_url('/international') ?>" class="btn btn-primary">Shop now</a></p>
         </div>
       </div>
       <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?= base_url('/images/international-purchase.jpg') ?>);">

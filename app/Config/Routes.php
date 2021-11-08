@@ -42,7 +42,6 @@ $routes->post('/cart/delete', 'Cart::delete');
 
 $routes->get('/product', 'Product::index');
 $routes->get('/product/(:any)', 'Product::detail/$1');
-$routes->get('/cities', 'Checkout::get_cities');
 
 $routes->get('/checkout', 'Checkout::index');
 $routes->get('/checkout/cities', 'Checkout::get_cities');
@@ -54,10 +53,18 @@ $routes->get('/download/(:num)', 'Home::download/$1');
 
 $routes->post('/transaction/notification', 'AdminTransaction::notification');
 
+$routes->post('/international/save/(:any)', 'International::save/$1');
+$routes->post('/international/payment', 'International::payment');
+$routes->get('/international', 'International::index');
+$routes->get('/international/(:any)', 'International::order/$1');
+
 $routes->get('/profile', 'Profile::index');
+$routes->post('/profile/update', 'Profile::update');
 $routes->get('/profile/settings', 'Profile::edit');
 $routes->get('/profile/transaction', 'Profile::transaction');
 $routes->get('/profile/transaction/(:num)', 'Profile::transaction_detail/$1');
+$routes->get('/profile/international', 'Profile::international_transaction');
+$routes->get('/profile/international/(:num)', 'Profile::international_detail/$1');
 
 $routes->group('/admin', ['filter' => 'role:admin'], function ($routes) {
 	$routes->get('/', function () {
@@ -83,6 +90,11 @@ $routes->group('/admin', ['filter' => 'role:admin'], function ($routes) {
 	$routes->post('transaction/reciept', 'AdminTransaction::reciept');
 	$routes->get('transaction', 'AdminTransaction::index');
 	$routes->get('transaction/(:num)', 'AdminTransaction::detail/$1');
+
+	$routes->post('international/invoice', 'AdminInternational::invoice');
+	$routes->post('international/reciept', 'AdminInternational::reciept');
+	$routes->get('international', 'AdminInternational::index');
+	$routes->get('international/(:num)', 'AdminInternational::detail/$1');
 
 	$routes->get('user', 'AdminUser::index');
 	$routes->post('user/role/(:num)', 'AdminUser::role/$1');

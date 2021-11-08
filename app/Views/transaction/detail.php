@@ -84,8 +84,10 @@
           <div class="card-body">
             <div class="card-text">
               <p class="h3 mb-2"><?= $pesan; ?></p>
+              <?php if ($transaction['reciept_number']) : ?>
+                <p class="h4 text-muted mb-2">This is the reciept number : <?= $transaction['reciept_number']; ?></p>
+              <?php endif; ?>
               <?php if ($pdf != '') : ?>
-                <p class="h4 text-muted mb-2">You can get step by step payment here</p>
                 <a class="btn btn-primary mb-2" href="<?= $pdf; ?>">Download Instructions</a>
               <?php endif; ?>
               <?php if ($bill != '') : ?>

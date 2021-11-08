@@ -22,7 +22,7 @@
       <div class="col-md-7 py-3 wrap-about pb-md-5 ftco-animate">
         <div class="heading-section-bold mb-4 mt-md-5">
           <div class="ml-md-0">
-            <h2 class="mb-4">Welcome to Sok Kabeh
+            <h2 class="mb-4">Welcome to CV INDONESIA NATURE MIRACLE
             </h2>
           </div>
         </div>

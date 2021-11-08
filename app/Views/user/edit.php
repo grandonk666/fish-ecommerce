@@ -13,7 +13,7 @@
           <h5 class="card-title mb-0">User info</h5>
         </div>
         <div class="card-body">
-          <form action="<?= base_url('/profil/update'); ?>" method="post" enctype="multipart/form-data">
+          <form action="<?= base_url('/profile/update'); ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
 
             <div class="row">
@@ -50,18 +50,6 @@
                 </div>
 
               </div>
-              <div class="col-md-4">
-                <div class="text-center">
-                  <img alt="<?= $user->name ?>" src="<?= base_url('/images/' . $user->user_image) ?>" style="object-fit: cover;" class="rounded-circle img-responsive mb-3 img-preview" width="200" height="200" />
-
-                  <input type="file" class="custom-file-input d-block <?= ($validation->hasError('user_image')) ? 'is-invalid' : ''; ?>" id="user_image" name="user_image" onchange="previewImg();">
-
-                  <div class="invalid-feedback">
-                    <?= $validation->getError('user_image'); ?>
-                  </div>
-                  <small>For best results, use an image at least 128px by 128px in .jpg format</small>
-                </div>
-              </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -72,19 +60,5 @@
     </div>
   </div>
 </div>
-
-<script defer>
-  function previewImg() {
-    const sampul = document.querySelector("#user_image");
-    const imgPreview = document.querySelector(".img-preview");
-
-    const fileSampul = new FileReader();
-    fileSampul.readAsDataURL(sampul.files[0]);
-
-    fileSampul.onload = function(e) {
-      imgPreview.src = e.target.result;
-    };
-  }
-</script>
 
 <?= $this->endSection(); ?>

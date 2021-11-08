@@ -2,9 +2,36 @@
 <html lang="en">
 
 <head>
-  <title>Sok Kabeh</title>
+  <title>CV INDONESIA NATURE MIRACLE</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('/icons/apple-touch-icon.png') ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('/icons/favicon-32x32.png') ?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('/icons/favicon-16x16.png') ?>">
+  <link rel="manifest" href="<?= base_url('/icons/site.webmanifest') ?>">
+  <link rel="mask-icon" href="<?= base_url('/icons/safari-pinned-tab.svg') ?>" color="#5bbad5">
+  <link rel="shortcut icon" href="<?= base_url('/icons/favicon.ico') ?>">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="<?= base_url('/icons/browserconfig.xml') ?>">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta name="apple-mobile-web-app-title" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="application-name" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="keywords" content="food, fish, seafood">
+  <meta property="og:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
+  <meta name="twitter:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
+  <meta name="description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta property="og:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta name="twitter:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta name="image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta property="og:image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta name="twitter:image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@site">
+  <meta name="twitter:creator" content="@handle">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="CV INDONESIA NATURE MIRACLE">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -83,7 +110,7 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="<?= base_url() ?>">Sok Kabeh</a>
+      <a class="navbar-brand" href="<?= base_url() ?>">CV INDONESIA NATURE MIRACLE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -100,7 +127,7 @@
               <a class="dropdown-item" href="<?= base_url('/product') ?>">
                 Domestic (IDN)
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="<?= base_url('/international') ?>">
                 International
               </a>
             </div>
@@ -165,7 +192,7 @@
       <div class="row mb-4">
         <div class="col-md">
           <div class="ftco-footer-widget">
-            <h2 class="ftco-heading-2">SOK KABEH</h2>
+            <h2 class="ftco-heading-2">CV INDONESIA NATURE MIRACLE</h2>
             <p>Perfect solution for your cooking session</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
@@ -188,7 +215,7 @@
         <div class="col-md-12">
           <div class="ftco-footer-widget py-3 border-top">
             <p class="mb-0 text-muted text-center">
-              &copy; Sok Kabeh 2021
+              &copy; CV INDONESIA NATURE MIRACLE 2021
             </p>
           </div>
         </div>

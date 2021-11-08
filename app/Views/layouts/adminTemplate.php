@@ -5,8 +5,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('/icons/apple-touch-icon.png') ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('/icons/favicon-32x32.png') ?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('/icons/favicon-16x16.png') ?>">
+  <link rel="manifest" href="<?= base_url('/icons/site.webmanifest') ?>">
+  <link rel="mask-icon" href="<?= base_url('/icons/safari-pinned-tab.svg') ?>" color="#5bbad5">
+  <link rel="shortcut icon" href="<?= base_url('/icons/favicon.ico') ?>">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="<?= base_url('/icons/browserconfig.xml') ?>">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta name="apple-mobile-web-app-title" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="application-name" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="keywords" content="food, fish, seafood">
+  <meta property="og:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
+  <meta name="twitter:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
+  <meta name="description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta property="og:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta name="twitter:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta name="image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta property="og:image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta name="twitter:image" content="<?= base_url('/images/bg_1.jpg') ?>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@site">
+  <meta name="twitter:creator" content="@handle">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="CV INDONESIA NATURE MIRACLE">
 
   <link href="<?= base_url('/images/favicon.png') ?>" rel="icon" />
   <link href="<?= base_url('/images/favicon.png') ?>" rel="apple-touch-icon" />
@@ -21,7 +46,7 @@
     <nav id="sidebar" class="sidebar d-print-none">
       <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="<?= base_url('/admin'); ?>">
-          <span class="text-white">Sok Kabeh</span>
+          <span class="text-white">CV INDONESIA NATURE MIRACLE</span>
         </a>
 
         <ul class="sidebar-nav">
@@ -42,11 +67,19 @@
                 <span class="align-middle">Categories</span>
               </a>
             </li>
-            <li class="sidebar-item <?= ($nav == 'admin_transaction') ? 'active' : '' ?>">
-              <a class="sidebar-link" href="<?= base_url('/admin/transaction'); ?>">
+            <li class="sidebar-item <?= ($nav == 'admin_transaction' || $nav == 'admin_international') ? 'active' : '' ?>">
+              <a data-target="#admin_transaction" data-toggle="collapse" class="sidebar-link collapsed">
                 <i class="align-middle" data-feather="dollar-sign"></i>
                 <span class="align-middle">Transactions</span>
               </a>
+              <ul id="admin_transaction" class="sidebar-dropdown list-unstyled collapse <?= ($nav == 'admin_transaction' || $nav == 'admin_international') ? 'show' : '' ?>" data-parent="#sidebar">
+                <li class="sidebar-item <?= ($nav == 'admin_transaction') ? 'active' : '' ?>">
+                  <a class="sidebar-link" href="<?= base_url('/admin/transaction'); ?>">Domestic</a>
+                </li>
+                <li class="sidebar-item <?= ($nav == 'admin_international') ? 'active' : '' ?>">
+                  <a class="sidebar-link" href="<?= base_url('/admin/international'); ?>">International</a>
+                </li>
+              </ul>
             </li>
             <li class="sidebar-item <?= ($nav == 'user') ? 'active' : '' ?>">
               <a class="sidebar-link" href="<?= base_url('/admin/user'); ?>">
@@ -65,11 +98,19 @@
               <span class="align-middle">Profil</span>
             </a>
           </li>
-          <li class="sidebar-item <?= ($nav == 'user_transaction') ? 'active' : '' ?>">
-            <a class="sidebar-link" href="<?= base_url('/profile/transaction'); ?>">
+          <li class="sidebar-item <?= ($nav == 'user_transaction' || $nav == 'user_international') ? 'active' : '' ?>">
+            <a data-target="#user_transaction" data-toggle="collapse" class="sidebar-link collapsed">
               <i class="align-middle" data-feather="maximize-2"></i>
-              <span class="align-middle">My Transaction</span>
+              <span class="align-middle">My Transactions</span>
             </a>
+            <ul id="user_transaction" class="sidebar-dropdown list-unstyled collapse <?= ($nav == 'user_transaction' || $nav == 'user_international') ? 'show' : '' ?>" data-parent="#sidebar">
+              <li class="sidebar-item <?= ($nav == 'user_transaction') ? 'active' : '' ?>">
+                <a class="sidebar-link" href="<?= base_url('/profile/transaction'); ?>">Domestic</a>
+              </li>
+              <li class="sidebar-item <?= ($nav == 'user_international') ? 'active' : '' ?>">
+                <a class="sidebar-link" href="<?= base_url('/profile/international'); ?>">International</a>
+              </li>
+            </ul>
           </li>
           <li class="sidebar-item <?= ($nav == 'settings') ? 'active' : '' ?>">
             <a class="sidebar-link" href="<?= base_url('/profile/settings'); ?>">
@@ -151,7 +192,7 @@
         <div class="container-fluid">
           <div class="row text-muted">
             <div class="col-6 text-left">
-              <p class="mb-0"><strong>Sok Kabeh</strong>
+              <p class="mb-0"><strong>CV INDONESIA NATURE MIRACLE</strong>
                 &copy;
               </p>
             </div>

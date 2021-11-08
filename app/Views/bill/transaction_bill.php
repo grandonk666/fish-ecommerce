@@ -12,7 +12,7 @@
   <div style="width: 100%; margin: 0 auto">
     <div style="width: 100%; margin: 0; background-color: #ffffff">
       <h2 style="margin: 0; padding: 10px 0 5px 20px; font-size: 2em">
-        Sok Kabeh
+        CV INDONESIA NATURE MIRACLE
       </h2>
       <p style="margin: 0; padding: 5px 0 5px 20px; font-size: 1.6em">
         IDR <?= number_format($transaction['total'], '0', '', '.'); ?>
