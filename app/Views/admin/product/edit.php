@@ -54,6 +54,32 @@
             </div>
 
             <div class="form-group row mb-3">
+              <label for="domestic_stock" class="col-form-label col-sm-3">Domestic Stock</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input type="number" class="form-control <?= ($validation->hasError('domestic_stock')) ? 'is-invalid' : ''; ?>" id="domestic_stock" name="domestic_stock" value="<?= old('domestic_stock', $product['domestic_stock']); ?>">
+                  <span class="input-group-text">pcs</span>
+                  <div class="invalid-feedback">
+                    <?= $validation->getError('domestic_stock'); ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3">
+              <label for=international_stock" class="col-form-label col-sm-3">International Stock</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input type="number" class="form-control <?= ($validation->hasError('international_stock')) ? 'is-invalid' : ''; ?>" id="international_stock" name="international_stock" value="<?= old('international_stock', $product['international_stock']); ?>">
+                  <span class="input-group-text">container</span>
+                  <div class="invalid-feedback">
+                    <?= $validation->getError('international_stock'); ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3">
               <?php if ($product['image']) : ?>
                 <div class="d-flex img-container justify-content-end">
                   <img src="<?= base_url('images/product-images/' . $product['image']) ?>" height="120" width="120" class="img-preview mb-2 border border-dark" style="object-fit: cover;">

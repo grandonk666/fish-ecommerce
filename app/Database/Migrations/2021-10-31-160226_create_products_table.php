@@ -40,6 +40,14 @@ class CreateProductsTable extends Migration
                 'type'       => 'INT',
                 'constraint' => 11,
             ],
+            'domestic_stock'       => [
+                'type'       => 'INT',
+                'constraint' => 11,
+            ],
+            'international_stock'       => [
+                'type'       => 'INT',
+                'constraint' => 11,
+            ],
             'created_at'       => [
                 'type' => 'datetime',
                 'null' => true

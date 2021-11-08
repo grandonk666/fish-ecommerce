@@ -29,9 +29,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th style="width: 20%">Name</th>
-              <th style="width: 35%">Category</th>
-              <th style="width: 20%">Price</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Domestic Stock</th>
+              <th>International Stock</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -42,7 +43,8 @@
                 <td>
                   <strong><?= $product['category']['name']; ?></strong>
                 </td>
-                <td><?= $product['price']; ?></td>
+                <td><?= $product['domestic_stock'] > 0 ? $product['domestic_stock'] . ' pcs' : 'out of stock'; ?></td>
+                <td><?= $product['international_stock'] > 0 ? $product['international_stock'] . ' container' : 'out of stock'; ?></td>
                 <td class="table-action">
                   <a href="<?= base_url("/admin/product/edit/" . $product['id']); ?>" class="btn btn-outline"><i class="align-middle" data-feather="edit-2"></i></a>
                 </td>

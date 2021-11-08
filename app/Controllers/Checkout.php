@@ -185,6 +185,17 @@ class Checkout extends BaseController
       'delivery_service' => $this->request->getVar('delivery_service')
     ];
 
+    $orders = json_decode($data['order'], true);
+    foreach ($orders as $order) {
+      $product = $this->productModel->find($order['id']);
+      if ($product) {
+        $this->productModel->save([
+          'id' => $product['id'],
+          'domestic_stock' => $product['domestic_stock'] - $order['quantity']
+        ]);
+      }
+    }
+
     $this->transactionModel->save($data);
 
     $this->cart->destroy();

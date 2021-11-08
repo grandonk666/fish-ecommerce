@@ -23,7 +23,7 @@
 
           <?php if ($product['in_cart']) : ?>
             <h5>Already In Cart</h5>
-          <?php else : ?>
+          <?php elseif (!$product['in_cart'] && $product['domestic_stock'] > 0) : ?>
 
             <form action="<?= base_url('/cart') ?>" method="POST" id="add-to-cart">
               <?= csrf_field(); ?>
@@ -51,6 +51,8 @@
               </p>
             </form>
 
+          <?php else : ?>
+            <h5>Out Of Stock</h5>
           <?php endif; ?>
         </div>
       </div>

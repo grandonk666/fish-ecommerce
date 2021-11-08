@@ -28,7 +28,15 @@ class AdminProduct extends BaseController
     'image' => [
       'label' => 'Image',
       'rules' => 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
-    ]
+    ],
+    'domestic_stock' => [
+      'label' => "Domestic Stock",
+      'rules' => 'required',
+    ],
+    'international_stock' => [
+      'label' => "International Stock",
+      'rules' => 'required',
+    ],
   ];
   public function __construct()
   {
@@ -77,6 +85,8 @@ class AdminProduct extends BaseController
       'slug' => url_title($this->request->getVar('name'), '-', true),
       'category_id' => (int)$this->request->getVar('category'),
       'price' => (int)$this->request->getVar('price'),
+      'domestic_stock' => (int)$this->request->getVar('domestic_stock'),
+      'international_stock' => (int)$this->request->getVar('international_stock'),
       'detail' => $this->request->getVar('detail'),
       'image' => $this->getProductImage($this->request->getFile('image')),
     ];
@@ -133,6 +143,8 @@ class AdminProduct extends BaseController
       'slug' => url_title($this->request->getVar('name'), '-', true),
       'category_id' => (int)$this->request->getVar('category'),
       'price' => (int)$this->request->getVar('price'),
+      'domestic_stock' => (int)$this->request->getVar('domestic_stock'),
+      'international_stock' => (int)$this->request->getVar('international_stock'),
       'detail' => $this->request->getVar('detail'),
       'image' => $this->getProductImage($this->request->getFile('image'), $product),
     ];
