@@ -67,7 +67,13 @@ class International extends BaseController
       'status' => 'Waiting Approvement'
     ];
 
+    $product = $this->productModel->find($data['product_id']);
+
     $this->internatioanalTransactionModel->save($data);
+    $this->productModel->save([
+      'id' => $product['id'],
+      'international_stock' => $product['international_stock'] - 1
+    ]);
 
     session()->setFlashdata('success', 'Order Successfull');
 

@@ -35,13 +35,26 @@
                 </div>
               </div>
 
-              <div class="bottom-area d-flex px-3">
-                <div class="m-auto d-flex">
-                  <a href="<?= base_url('/international/' . $product['slug']) ?>" class="buy-now d-flex justify-content-center align-items-center mx-1 px-1">
-                    <span>Select This Product</span>
-                  </a>
+              <?php if ($product['international_stock'] > 0) : ?>
+                <div class="bottom-area d-flex px-3">
+                  <div class="m-auto d-flex">
+                    <a href="<?= base_url('/international/' . $product['slug']) ?>" class="buy-now d-flex justify-content-center align-items-center mx-1 px-1">
+                      <span>Select This Product</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              <?php endif; ?>
+
+              <?php if ($product['international_stock'] <= 0) : ?>
+                <div class="bottom-area d-flex px-3">
+                  <div class="m-auto d-flex">
+                    <button type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 text-primary" style="background-color: #fff !important;" disabled>
+                      <span>Out Of Stock</span>
+                    </button>
+                    </form>
+                  </div>
+                </div>
+              <?php endif; ?>
 
             </div>
           </div>

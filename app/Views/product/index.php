@@ -48,7 +48,7 @@
               <?php endif; ?>
 
               <?php if ($product['domestic_stock'] <= 0) : ?>
-                <div class="bottom-area d-flex px-3" id="<?= 'product-' . $product['id']; ?>">
+                <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
                     <button type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 text-primary" style="background-color: #fff !important;" disabled>
                       <span>Out Of Stock</span>
