@@ -19,6 +19,10 @@
           <?= $product['detail']; ?>
         </p>
 
+        <p class="h5">
+          Stock : <strong><?= $product['domestic_stock']; ?></strong>
+        </p>
+
         <div id="cart-section">
 
           <?php if ($product['in_cart']) : ?>
@@ -36,7 +40,7 @@
                       <i class="ion-ios-remove"></i>
                     </button>
                   </span>
-                  <input type="text" id="quantity" value="1" name="quantity" class="form-control input-number" min="1" max="100">
+                  <input type="number" id="quantity" value="1" name="quantity" class="form-control input-number" min="1" max="<?= $product['domestic_stock']; ?>">
                   <span class="input-group-btn ml-2">
                     <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
                       <i class="ion-ios-add"></i>
@@ -141,7 +145,10 @@
   $('.quantity-right-plus').click(function(e) {
     e.preventDefault();
     var quantity = parseInt($('#quantity').val());
-    $('#quantity').val(quantity + 1);
+    const stock = parseInt(<?= $product['domestic_stock']; ?>);
+    if (quantity < stock) {
+      $('#quantity').val(quantity + 1);
+    }
   });
 
   $('.quantity-left-minus').click(function(e) {
