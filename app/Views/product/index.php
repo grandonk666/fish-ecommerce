@@ -18,10 +18,10 @@
   <div class="container">
     <div class="row">
       <?php foreach ($products as $product) : ?>
-        <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="col-md-3 ftco-animate">
           <div class="product">
             <a href="<?= base_url('/product/' . $product['slug']) ?>" class="img-prod">
-              <img class="img-fluid" src="<?= base_url('/images/product-images/' . $product['image']) ?>" alt="<?= $product['name']; ?>">
+              <img class="img-fluid img" src="<?= base_url('/images/product-images/' . $product['image']) ?>" alt="<?= $product['name']; ?>">
               <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">

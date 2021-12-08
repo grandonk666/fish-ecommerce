@@ -33,7 +33,9 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aliquid
             dolorum voluptatibus, expedita omnis numquam animi quae totam
             pariatur fugit!</p>
-          <p><a href="#" class="btn btn-primary">Shop now</a></p>
+          <p><a href="#" class="btn btn-primary">
+              <?= lang('Home.shopNow'); ?>
+            </a></p>
         </div>
       </div>
     </div>
