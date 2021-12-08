@@ -38,7 +38,7 @@ class AdminCategory extends BaseController
 
     $data = [
       'nav' => 'category',
-      'title' => 'Data Categories',
+      'title' => lang('Admin.dataCategories'),
       'categories' => $categories
     ];
 
@@ -49,7 +49,7 @@ class AdminCategory extends BaseController
   {
     $data = [
       'nav' => 'category',
-      'title' => 'Add Category',
+      'title' => lang('Admin.addCategory'),
       'validation' => \Config\Services::validation()
     ];
 
@@ -70,7 +70,7 @@ class AdminCategory extends BaseController
 
     $this->categoryModel->save($data);
 
-    session()->setFlashdata('success', 'Category Successfuly Added');
+    session()->setFlashdata('success', lang('Admin.categoryAdded'));
 
     return redirect()->to('/admin/category');
   }
@@ -84,7 +84,7 @@ class AdminCategory extends BaseController
 
     $this->categoryModel->delete($id);
 
-    session()->setFlashdata('success', 'Category Successfuly Deleted');
+    session()->setFlashdata('success', lang('Admin.categoryDeleted'));
 
     return redirect()->to('/admin/category');
   }
@@ -95,7 +95,7 @@ class AdminCategory extends BaseController
 
     $data = [
       'nav' => 'category',
-      'title' => 'Edit Category',
+      'title' => lang('Admin.editCategory'),
       'validation' => \Config\Services::validation(),
       'category' => $category,
     ];
@@ -125,7 +125,7 @@ class AdminCategory extends BaseController
 
     $this->categoryModel->save($data);
 
-    session()->setFlashdata('success', 'Category Successfuly Updated');
+    session()->setFlashdata('success', lang('Admin.categoryUpdated'));
 
     return redirect()->to('/admin/category');
   }

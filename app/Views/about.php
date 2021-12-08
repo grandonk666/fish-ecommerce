@@ -6,9 +6,9 @@
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.2); padding: 15em 0;">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-10 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>">Home</a></span> <span>About</span>
+        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>"><?= lang('Home.nav.home'); ?></a></span> <span><?= lang('Home.nav.about'); ?></span>
         </p>
-        <h1 class="mb-0 display-3 text-light">About</h1>
+        <h1 class="mb-0 display-3 text-light"><?= lang('Home.nav.about'); ?></h1>
       </div>
     </div>
   </div>
@@ -22,7 +22,8 @@
       <div class="col-md-7 py-3 wrap-about pb-md-5 ftco-animate">
         <div class="heading-section-bold mb-4 mt-md-5">
           <div class="ml-md-0">
-            <h2 class="mb-4">Welcome to CV INDONESIA NATURE MIRACLE
+            <h2 class="mb-4">
+              <?= lang('Home.welcomeTo'); ?>
             </h2>
           </div>
         </div>

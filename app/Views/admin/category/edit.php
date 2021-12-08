@@ -15,7 +15,9 @@
             <?= csrf_field(); ?>
 
             <div class="form-group row mb-3">
-              <label for="name" class="col-form-label col-sm-3">Name</label>
+              <label for="name" class="col-form-label col-sm-3">
+                <?= lang('Admin.name'); ?>
+              </label>
               <div class="col-sm-9">
                 <input type="text" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : ''; ?>" id="name" name="name" value="<?= old('name', $category['name']); ?>">
                 <div class="invalid-feedback">
@@ -35,7 +37,9 @@
                 </div>
               <?php endif; ?>
 
-              <label for="image" class="col-form-label col-sm-3">Image</label>
+              <label for="image" class="col-form-label col-sm-3">
+                <?= lang('Admin.image'); ?>
+              </label>
               <div class="col-sm-9">
                 <input onchange="previewImg();" name="image" class="img-input form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" type="file">
                 <div class="invalid-feedback">
@@ -46,8 +50,12 @@
 
             <div class="form-group row mt-4 justify-content-end">
               <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a class="btn btn-warning" href="<?= base_url('/admin/category'); ?>">Cancel</a>
+                <button type="submit" class="btn btn-primary">
+                  <?= lang('Admin.save'); ?>
+                </button>
+                <a class="btn btn-warning" href="<?= base_url('/admin/category'); ?>">
+                  <?= lang('Admin.cancel'); ?>
+                </a>
               </div>
             </div>
           </form>
@@ -60,7 +68,9 @@
           <form action="<?= base_url('/admin/category/' . $category['id']) ?>" method="post">
             <?= csrf_field(); ?>
             <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-danger mb-3 d-block"><i data-feather="trash" class="mr-1"></i>Delete Category</button>
+            <button type="submit" class="btn btn-danger mb-3 d-block"><i data-feather="trash" class="mr-1"></i>
+              <?= lang('Admin.delete'); ?>
+            </button>
           </form>
         </div>
       </div>

@@ -21,7 +21,7 @@ class Profile extends BaseController
   public function index()
   {
     $data = [
-      'title' => 'My Profile',
+      'title' => lang('Admin.myProfile'),
       'nav' => 'profile',
       'user' => user(),
     ];
@@ -31,7 +31,7 @@ class Profile extends BaseController
   public function edit()
   {
     $data = [
-      'title' => 'Settings',
+      'title' => lang('Admin.settings'),
       'validation' => \Config\Services::validation(),
       'nav' => 'settings',
       'user' => user(),
@@ -64,7 +64,7 @@ class Profile extends BaseController
 
     $this->userModel->save($data);
 
-    session()->setFlashdata('success', 'Profile Updated');
+    session()->setFlashdata('success', lang('Admin.profileUpdated'));
 
     return redirect()->to('/profile');
   }
@@ -119,7 +119,7 @@ class Profile extends BaseController
 
     $data = [
       'nav' => 'user_transaction',
-      'title' => 'User Transaction',
+      'title' => lang('Admin.userDomestic'),
       'transactions' => $transactions,
     ];
 
@@ -137,7 +137,7 @@ class Profile extends BaseController
     $detail = $this->getTransactionDetail($transaction);
 
     $data = [
-      'title' => 'Detail Transaction',
+      'title' => lang('Admin.detailTransaction'),
       'nav' => 'user_transaction',
       'transaction' => $transaction,
       'pesan' => $detail['pesan'],
@@ -192,7 +192,7 @@ class Profile extends BaseController
 
     $data = [
       'nav' => 'user_international',
-      'title' => 'User International Transaction',
+      'title' => lang('admin.userInter'),
       'transactions' => $transactions,
     ];
 
@@ -210,7 +210,7 @@ class Profile extends BaseController
     $detail = $this->getTransactionDetail($transaction);
 
     $data = [
-      'title' => 'Detail Transaction',
+      'title' => lang('Admin.detailTransaction'),
       'nav' => 'user_international',
       'validation' => \Config\Services::validation(),
       'transaction' => $transaction,
@@ -242,7 +242,7 @@ class Profile extends BaseController
     switch ($transaction['status']) {
       case 'Challenge by FDS':
         return [
-          'pesan' => 'The order has challenge by FDS, please try to reorder, or call the customer service',
+          'pesan' => lang('Admin.chalangeMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -250,7 +250,7 @@ class Profile extends BaseController
         break;
       case 'On Delivery':
         return [
-          'pesan' => 'The order is on delivery to your place',
+          'pesan' => lang('Admin.onDeliveryMsg'),
           'pdf' => '',
           'badge' => 'success',
           'bill' => '',
@@ -258,7 +258,7 @@ class Profile extends BaseController
         break;
       case 'Success':
         return [
-          'pesan' => 'The order is on proccessing',
+          'pesan' => lang('Admin.successMsg'),
           'pdf' => $transaction['pdf_url'] ?? '',
           'badge' => 'primary',
           'bill' => '',
@@ -266,7 +266,7 @@ class Profile extends BaseController
         break;
       case 'Settlement':
         return [
-          'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
+          'pesan' => lang('Admin.settlementMsg'),
           'badge' => 'success',
           'bill' => '/download/' . $transaction['id'],
           'pdf' => '',
@@ -274,7 +274,7 @@ class Profile extends BaseController
         break;
       case 'Waiting Approvement':
         return [
-          'pesan' => 'The order is stil waiting an approvement from the store',
+          'pesan' => lang('Admin.waitApprove'),
           'badge' => 'info',
           'bill' => '',
           'pdf' => '',
@@ -282,7 +282,7 @@ class Profile extends BaseController
         break;
       case 'Waiting Payment':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately',
+          'pesan' => lang('Admin.waitingPay'),
           'badge' => 'warning',
           'bill' => '',
           'pdf' => '',
@@ -290,7 +290,7 @@ class Profile extends BaseController
         break;
       case 'Checking Payment':
         return [
-          'pesan' => 'The order is waiting for payment check',
+          'pesan' => lang('Admin.checkPay'),
           'badge' => 'primary',
           'bill' => '',
           'pdf' => '',
@@ -298,7 +298,7 @@ class Profile extends BaseController
         break;
       case 'Pending':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.pendingMsg'),
           'pdf' => $transaction['pdf_url'],
           'badge' => 'warning',
           'bill' => '',
@@ -306,7 +306,7 @@ class Profile extends BaseController
         break;
       case 'Denied':
         return [
-          'pesan' => 'The order has been denied, please try to reorder or contact the customer service',
+          'pesan' => lang('Admin.deniedMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -314,7 +314,7 @@ class Profile extends BaseController
         break;
       case 'Expire':
         return [
-          'pesan' => 'The order has expired because it has passed the payment deadline',
+          'pesan' => lang('Admin.expireMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -322,7 +322,7 @@ class Profile extends BaseController
         break;
       case 'Canceled':
         return [
-          'pesan' => 'The order has been cancelled',
+          'pesan' => lang('Admin.cancelMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -331,7 +331,7 @@ class Profile extends BaseController
 
       default:
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.defaultMsg'),
           'badge' => 'info',
           'pdf' => $transaction['pdf_url'] ?? '',
           'bill' => '',

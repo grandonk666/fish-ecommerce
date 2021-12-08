@@ -6,9 +6,9 @@
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.2); padding: 15em 0;">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-10 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>">Home</a></span> <span>Products</span>
+        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>"><?= lang('Home.nav.home'); ?></a></span> <span><?= lang('Home.nav.products'); ?></span>
         </p>
-        <h1 class="mb-0 display-3 text-light">Products</h1>
+        <h1 class="mb-0 display-3 text-light"><?= lang('Home.nav.products'); ?></h1>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
                   <div class="m-auto d-flex">
                     <form>
                       <button onclick="addToCart(<?= $product['id']; ?>);" type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
-                        <span><i class="ion-ios-cart"></i> Add To Cart</span>
+                        <span><i class="ion-ios-cart"></i><?= lang('Home.addCart'); ?></span>
                       </button>
                     </form>
                   </div>
@@ -51,7 +51,7 @@
                 <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
                     <button type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 text-primary" style="background-color: #fff !important;" disabled>
-                      <span>Out Of Stock</span>
+                      <span><?= lang('Home.outStock'); ?></span>
                     </button>
                     </form>
                   </div>

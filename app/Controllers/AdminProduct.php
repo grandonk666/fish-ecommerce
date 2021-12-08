@@ -56,7 +56,7 @@ class AdminProduct extends BaseController
 
     $data = [
       'nav' => 'product',
-      'title' => 'Data Products',
+      'title' => lang('Admin.dataProducts'),
       'products' => $products,
     ];
     return view('admin/product/index', $data);
@@ -67,7 +67,7 @@ class AdminProduct extends BaseController
     $data = [
       'nav' => 'product',
       'validation' => \Config\Services::validation(),
-      'title' => 'Add Product',
+      'title' => lang('Admin.addProduct'),
       'categories' => $this->categoryModel->findAll(),
     ];
 
@@ -93,7 +93,7 @@ class AdminProduct extends BaseController
 
     $this->productModel->save($data);
 
-    session()->setFlashdata('success', 'Product Successfuly Added');
+    session()->setFlashdata('success', lang('Admin.productAdded'));
 
     return redirect()->to('/admin/product');
   }
@@ -107,7 +107,7 @@ class AdminProduct extends BaseController
 
     $this->productModel->delete($id);
 
-    session()->setFlashdata('success', 'Product Successfuly Deleted');
+    session()->setFlashdata('success', lang('Admin.productDeleted'));
 
     return redirect()->to('/admin/product');
   }
@@ -116,7 +116,7 @@ class AdminProduct extends BaseController
   {
     $data = [
       'nav' => 'product',
-      'title' => 'Edit Product',
+      'title' => lang('Admin.editProduct'),
       'validation' => \Config\Services::validation(),
       'product' => $this->productModel->find($id),
       'categories' => $this->categoryModel->findAll(),
@@ -151,7 +151,7 @@ class AdminProduct extends BaseController
 
     $this->productModel->save($data);
 
-    session()->setFlashdata('success', 'Product Successfuly Updated');
+    session()->setFlashdata('success', lang('Admin.productUpdated'));
 
     return redirect()->to('/admin/product');
   }

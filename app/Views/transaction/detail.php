@@ -16,9 +16,9 @@
             <input type="text" class="form-control py-2" placeholder="Reciept Number" name="reciept_number" value="<?= old('reciept_number', $transaction['reciept_number']) ?>">
             <button class="btn btn-info" type="submit">
               <?php if ($transaction['reciept_number']) : ?>
-                Update Reciept Number
+                <?= lang('Admin.updateReciept'); ?>
               <?php else : ?>
-                Set Reciept Number
+                <?= lang('Admin.setReciept'); ?>
               <?php endif; ?>
             </button>
           </div>
@@ -43,40 +43,39 @@
       <div class="card">
         <ul class="list-group list-group-flush">
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Serial Number</strong>
+            <strong><?= lang('Admin.serialNumber'); ?></strong>
             <span><?= $transaction['serial_number']; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Transaction ID</strong>
+            <strong><?= lang('Admin.transactionId'); ?></strong>
             <span><?= $transaction['transaction_id']; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Customer Name</strong>
+            <strong><?= lang('Admin.customer'); ?></strong>
             <span><?= $transaction['user']->name; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Total Items</strong>
+            <strong><?= lang('Admin.totalItem'); ?></strong>
             <span><?= count($transaction['order']); ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Total</strong>
+            <strong><?= lang('Admin.total'); ?></strong>
             <span>Rp <?= number_format($transaction['total'], '0', '', '.'); ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Payment Type</strong>
+            <strong><?= lang('Admin.type'); ?></strong>
             <span><?= $transaction['payment_type']; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Payment Code / VA Number</strong>
+            <strong><?= lang('Admin.paymentCode'); ?></strong>
             <span><?= $transaction['payment_code']; ?></span>
           </li>
           <li class="d-flex list-group-item py-3 justify-content-between">
-            <strong>Status</strong>
+            <strong><?= lang('Admin.status'); ?></strong>
             <p class="m-0"><span class="text-uppercase badge bg-<?= $badge; ?> text-light"><?= $transaction['status']; ?></span></p>
           </li>
         </ul>
       </div>
-      <a class="btn btn-sm btn-secondary text-decoration-none" href="<?= base_url('/profile/transaksi'); ?>">Kembali ke daftar</a>
     </div>
     <div class="col-md-6">
       <?php if ($pesan != '') : ?>
@@ -85,14 +84,22 @@
             <div class="card-text">
               <p class="h3 mb-2"><?= $pesan; ?></p>
               <?php if ($transaction['reciept_number']) : ?>
-                <p class="h4 text-muted mb-2">This is the reciept number : <?= $transaction['reciept_number']; ?></p>
+                <p class="h4 text-muted mb-2">
+                  <?= lang('Admin.thisIsReciept'); ?> : <?= $transaction['reciept_number']; ?>
+                </p>
               <?php endif; ?>
               <?php if ($pdf != '') : ?>
-                <a class="btn btn-primary mb-2" href="<?= $pdf; ?>">Download Instructions</a>
+                <a class="btn btn-primary mb-2" href="<?= $pdf; ?>">
+                  <?= lang('Admin.downloadInstructions'); ?>
+                </a>
               <?php endif; ?>
               <?php if ($bill != '') : ?>
-                <p class="h4 text-muted mb-2">You can get your payment bill here</p>
-                <a class="btn btn-primary mb-2" href="<?= base_url($bill) ?>">Download Bill</a>
+                <p class="h4 text-muted mb-2">
+                  <?= lang('Admin.getPaymentBill'); ?>
+                </p>
+                <a class="btn btn-primary mb-2" href="<?= base_url($bill) ?>">
+                  <?= lang('Admin.downloadBill'); ?>
+                </a>
               <?php endif; ?>
             </div>
           </div>
@@ -101,7 +108,7 @@
       <div class="card">
         <div class="py-3">
           <div class="card-header my-0 py-0">
-            <h4>List Item</h4>
+            <h4><?= lang('Admin.listItem'); ?></h4>
           </div>
           <div class="card-body my-0 py-0">
             <ul class="list-group list-group-flush my-0 py-0 px-4">
@@ -117,7 +124,7 @@
         <div class="dropdown-divider px-4"></div>
         <div class="py-3">
           <div class="card-header my-0 py-0 d-flex justify-content-between">
-            <h4>Total</h4>
+            <h4><?= lang('Admin.total'); ?></h4>
             <span class="px-4">Rp <?= number_format($transaction['total'], '0', '', '.'); ?></span>
           </div>
         </div>
@@ -126,20 +133,26 @@
       <div class="card">
         <div class="py-3">
           <div class="card-header my-0 py-0">
-            <h4>Delivery Detail</h4>
+            <h4><?= lang('Admin.deliveryDetail'); ?></h4>
           </div>
           <div class="card-body my-0 py-0">
             <ul class="list-group list-group-flush my-0 py-0 px-4">
               <li class="d-block py-1">
-                <p class="mb-0 h5">Detail Address</p>
+                <p class="mb-0 h5">
+                  <?= lang('Admin.detailAddress'); ?>
+                </p>
                 <p class="text-muted mb-0"><?= $transaction['address'] ?></p>
               </li>
               <li class="d-block py-1">
-                <p class="mb-0 h5">City</p>
+                <p class="mb-0 h5">
+                  <?= lang('Admin.city'); ?>
+                </p>
                 <p class="text-muted mb-0"><?= $transaction['city'] ?></p>
               </li>
               <li class="d-block py-1">
-                <p class="mb-0 h5">Province</p>
+                <p class="mb-0 h5">
+                  <?= lang('Admin.province'); ?>
+                </p>
                 <p class="text-muted mb-0"><?= $transaction['province'] ?></p>
               </li>
             </ul>

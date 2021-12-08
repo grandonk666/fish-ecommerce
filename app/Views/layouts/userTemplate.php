@@ -87,7 +87,7 @@
 
 <body class="goto-here">
   <div class="py-1 bg-primary">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
         <div class="col-lg-12 d-block">
           <div class="row d-flex">
@@ -109,7 +109,7 @@
     </div>
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" href="<?= base_url() ?>">CV INDONESIA NATURE MIRACLE (Hanya Untuk Pengujian)</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
@@ -118,37 +118,44 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="<?= base_url() ?>" class="nav-link">Home</a>
+            <a href="<?= base_url() ?>" class="nav-link"><?= lang('Home.nav.home'); ?></a>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= lang('Home.nav.shop'); ?></a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="<?= base_url('/product') ?>">
-                Domestic (IDN)
+                <?= lang('Home.nav.domestic'); ?>
               </a>
               <a class="dropdown-item" href="<?= base_url('/international') ?>">
-                International
+                <?= lang('Home.nav.international'); ?>
               </a>
             </div>
           </li>
 
           <li class="nav-item">
-            <a href="<?= base_url('/about') ?>" class="nav-link">About</a>
+            <a href="<?= base_url('/about') ?>" class="nav-link"><?= lang('Home.nav.about'); ?></a>
           </li>
 
           <?php if (logged_in()) : ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= user()->firstname ?></a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="<?= base_url('/profile/transaction') ?>">Order
-                  Transaction</a>
-                <a class="dropdown-item" href="<?= base_url('/profile') ?>">Profile</a>
-                <a class="dropdown-item" href="<?= base_url('/logout') ?>">Logout</a>
+                <a class="dropdown-item" href="<?= base_url('/profile/transaction') ?>">
+                  <?= lang('Home.nav.orderTransaction'); ?>
+                </a>
+                <a class="dropdown-item" href="<?= base_url('/profile') ?>">
+                  <?= lang('Home.nav.profile'); ?>
+                </a>
+                <a class="dropdown-item" href="<?= base_url('/logout') ?>">
+                  <?= lang('Home.nav.logout'); ?>
+                </a>
               </div>
             </li>
           <?php else : ?>
-            <li class="nav-item"><a href="<?= base_url('/login') ?>" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="<?= base_url('/login') ?>" class="nav-link">
+                <?= lang('Home.nav.login'); ?>
+              </a></li>
           <?php endif; ?>
 
           <li class="nav-item cta cta-colored">
@@ -161,6 +168,10 @@
           </li>
         </ul>
       </div>
+      <div class="btn-group ml-3">
+        <a href="<?= base_url('lang/id') ?>" class="<?= session()->get('lang') == 'id' ? 'active' : '' ?> btn btn-outline-secondary">ID</a>
+        <a href="<?= base_url('lang/en') ?>" class="<?= session()->get('lang') == 'en' ? 'active' : '' ?> btn btn-outline-secondary">EN</a>
+      </div>
     </div>
   </nav>
 
@@ -170,11 +181,11 @@
     <div class="container py-4">
       <div class="row d-flex justify-content-center py-5">
         <div class="col-md-6">
-          <h2 style="font-size: 22px;" class="mb-0">Start Today</h2>
-          <span>Get the best quality product</span>
+          <h2 style="font-size: 22px;" class="mb-0"><?= lang('Home.startToday'); ?></h2>
+          <span><?= lang('Home.bestProduct'); ?></span>
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center">
-          <a href="<?= base_url('/register') ?>" class="btn btn-primary btn-lg">Register Now</a>
+          <a href="<?= base_url('/register') ?>" class="btn btn-primary btn-lg"><?= lang('Home.registerNow'); ?></a>
         </div>
       </div>
     </div>
@@ -193,7 +204,7 @@
         <div class="col-md">
           <div class="ftco-footer-widget">
             <h2 class="ftco-heading-2">CV INDONESIA NATURE MIRACLE</h2>
-            <p>Perfect solution for your cooking session</p>
+            <p><?= lang('Home.perfectSolution'); ?></p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
               <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
@@ -204,9 +215,12 @@
           <div class="ftco-footer-widget text-right">
             <h2 class="ftco-heading-2">Menu</h2>
             <ul class="list-unstyled">
-              <li><a href="<?= base_url('/product') ?>" class="py-2 d-block">Shop</a>
-              </li>
-              <li><a href="<?= base_url('/about') ?>" class="py-2 d-block">About</a></li>
+              <li><a href="<?= base_url('/product') ?>" class="py-2 d-block">
+                  <?= lang('Home.nav.shop'); ?>
+                </a></li>
+              <li><a href="<?= base_url('/about') ?>" class="py-2 d-block">
+                  <?= lang('Home.nav.about'); ?>
+                </a></li>
             </ul>
           </div>
         </div>

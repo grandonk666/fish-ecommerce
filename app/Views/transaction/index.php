@@ -10,7 +10,7 @@
 
       <div class="row justify-content-between d-print-none">
         <div class="col-md-2">
-          <a href="#" onclick="window.print()" class="btn btn-success mb-2 d-block"><i data-feather="printer"></i>Print</a>
+          <a href="#" onclick="window.print()" class="btn btn-success mb-2 d-block"><i data-feather="printer"></i><?= lang('Admin.print'); ?></a>
         </div>
       </div>
 
@@ -30,12 +30,12 @@
         <table class="table">
           <thead>
             <tr>
-              <th class="d-none d-xl-table-cell d-print-table-cell">Customer</th>
-              <th class="d-none d-xl-table-cell d-print-table-cell">Type</th>
-              <th>Total Item</th>
-              <th>Total</th>
-              <th>Status</th>
-              <th class="d-print-none">Aksi</th>
+              <th class="d-none d-xl-table-cell d-print-table-cell"><?= lang('Admin.customer'); ?></th>
+              <th class="d-none d-xl-table-cell d-print-table-cell"><?= lang('Admin.type'); ?></th>
+              <th><?= lang('Admin.totalItem'); ?></th>
+              <th><?= lang('Admin.total'); ?></th>
+              <th><?= lang('Admin.status'); ?></th>
+              <th class="d-print-none"><?= lang('Admin.action'); ?></th>
             </tr>
           </thead>
           <tbody>
@@ -50,9 +50,9 @@
                 </td>
                 <td class="d-print-none">
                   <?php if (in_groups('admin')) : ?>
-                    <a href="<?= base_url("/admin/transaction/" . $transaction['id']); ?>" class="btn btn-sm btn-outline-info">Detail</a>
+                    <a href="<?= base_url("/admin/transaction/" . $transaction['id']); ?>" class="btn btn-sm btn-outline-info"><?= lang('Admin.detail'); ?></a>
                   <?php else : ?>
-                    <a href="<?= base_url("/profile/transaction/" . $transaction['id']); ?>" class="btn btn-sm btn-outline-info">Detail</a>
+                    <a href="<?= base_url("/profile/transaction/" . $transaction['id']); ?>" class="btn btn-sm btn-outline-info"><?= lang('Admin.detail'); ?></a>
                   <?php endif; ?>
                 </td>
 

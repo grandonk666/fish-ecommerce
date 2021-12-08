@@ -65,7 +65,7 @@ class AdminTransaction extends BaseController
 
     $data = [
       'nav' => 'admin_transaction',
-      'title' => 'Data Transactions',
+      'title' => lang('Admin.dataDomestic'),
       'transactions' => $transactions,
     ];
 
@@ -80,7 +80,7 @@ class AdminTransaction extends BaseController
     $detail = $this->getTransactionDetail($transaction);
 
     $data = [
-      'title' => 'Detail Transaction',
+      'title' => lang('Admin.detailTransaction'),
       'nav' => 'admin_transaction',
       'transaction' => $transaction,
       'pesan' => $detail['pesan'],
@@ -100,7 +100,7 @@ class AdminTransaction extends BaseController
       'status' => 'On Delivery'
     ]);
 
-    session()->setFlashdata('success', 'Reciept Number Updated');
+    session()->setFlashdata('success', lang('Admin.recieptUpdated'));
 
     return redirect()->to('/admin/transaction/' . $this->request->getVar('transaction_id'));
   }
@@ -181,7 +181,7 @@ class AdminTransaction extends BaseController
     switch ($transaction['status']) {
       case 'Challenge by FDS':
         return [
-          'pesan' => 'The order has challenge by FDS, please try to reorder, or call the customer service',
+          'pesan' => lang('Admin.chalangeMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -189,7 +189,7 @@ class AdminTransaction extends BaseController
         break;
       case 'On Delivery':
         return [
-          'pesan' => 'The order is on delivery to your place. This is the reciept number : ',
+          'pesan' => lang('Admin.onDeliveryMsg'),
           'pdf' => '',
           'badge' => 'success',
           'bill' => '',
@@ -197,7 +197,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Success':
         return [
-          'pesan' => 'The order is on proccessing',
+          'pesan' => lang('Admin.successMsg'),
           'pdf' => $transaction['pdf_url'] ?? '',
           'badge' => 'primary',
           'bill' => '',
@@ -205,7 +205,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Settlement':
         return [
-          'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
+          'pesan' => lang('Admin.settlementMsg'),
           'badge' => 'success',
           'bill' => '/download/' . $transaction['id'],
           'pdf' => '',
@@ -213,7 +213,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Waiting Approvement':
         return [
-          'pesan' => 'The order is stil waiting an approvement from the store',
+          'pesan' => lang('Admin.waitApprove'),
           'badge' => 'info',
           'bill' => '',
           'pdf' => '',
@@ -221,7 +221,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Waiting Payment':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately',
+          'pesan' => lang('Admin.waitingPay'),
           'badge' => 'warning',
           'bill' => '',
           'pdf' => '',
@@ -229,7 +229,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Checking Payment':
         return [
-          'pesan' => 'The order is waiting for payment check',
+          'pesan' => lang('Admin.checkPay'),
           'badge' => 'primary',
           'bill' => '',
           'pdf' => '',
@@ -237,7 +237,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Pending':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.pendingMsg'),
           'pdf' => $transaction['pdf_url'],
           'badge' => 'warning',
           'bill' => '',
@@ -245,7 +245,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Denied':
         return [
-          'pesan' => 'The order has been denied, please try to reorder or contact the customer service',
+          'pesan' => lang('Admin.deniedMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -253,7 +253,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Expire':
         return [
-          'pesan' => 'The order has expired because it has passed the payment deadline',
+          'pesan' => lang('Admin.expireMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -261,7 +261,7 @@ class AdminTransaction extends BaseController
         break;
       case 'Canceled':
         return [
-          'pesan' => 'The order has been cancelled',
+          'pesan' => lang('Admin.cancelMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -270,7 +270,7 @@ class AdminTransaction extends BaseController
 
       default:
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.defaultMsg'),
           'badge' => 'info',
           'pdf' => $transaction['pdf_url'] ?? '',
           'bill' => '',

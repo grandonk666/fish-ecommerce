@@ -6,9 +6,9 @@
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.2); padding: 15em 0;">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-10 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>">Home</a></span> <span>International</span>
+        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>"><?= lang('Home.nav.home'); ?></a></span> <span><?= lang('Home.nav.international'); ?></span>
         </p>
-        <h1 class="mb-0 display-3 text-light">International</h1>
+        <h1 class="mb-0 display-3 text-light"><?= lang('Home.nav.international'); ?></h1>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
                 <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
                     <a href="<?= base_url('/international/' . $product['slug']) ?>" class="buy-now d-flex justify-content-center align-items-center mx-1 px-1">
-                      <span>Select This Product</span>
+                      <span><?= lang('Home.selectProduct'); ?></span>
                     </a>
                   </div>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
                     <button type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 text-primary" style="background-color: #fff !important;" disabled>
-                      <span>Out Of Stock</span>
+                      <span><?= lang('Home.outStock'); ?></span>
                     </button>
                     </form>
                   </div>

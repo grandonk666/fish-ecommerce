@@ -24,10 +24,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th style="width: 25%">Nama</th>
+              <th style="width: 25%"><?= lang('Admin.name'); ?></th>
               <th style="width: 35%">Email</th>
               <th style="width: 10%">Role</th>
-              <th>Action</th>
+              <th><?= lang('Admin.action'); ?></th>
             </tr>
           </thead>
           <tbody>
@@ -38,15 +38,9 @@
                   <?= $user->email; ?>
                 </td>
                 <td>
-                  <?php if ($user->id == user_id()) : ?>
-                    <span class="text-uppercase badge bg-secondary">
-                      Current User
-                    </span>
-                  <?php else : ?>
-                    <span class="text-uppercase badge <?= ($user->getRoles()[0]['name'] == 'admin') ? 'bg-primary' : 'bg-success' ?>">
-                      <?= $user->getRoles()[0]['name']; ?>
-                    </span>
-                  <?php endif; ?>
+                  <span class="text-uppercase badge <?= ($user->getRoles()[0]['name'] == 'admin') ? 'bg-primary' : 'bg-success' ?>">
+                    <?= $user->getRoles()[0]['name']; ?>
+                  </span>
                 </td>
                 <td class="table-action">
                   <?php if ($user->id != user_id()) : ?>
@@ -56,7 +50,9 @@
                         <?= csrf_field(); ?>
 
                         <input type="hidden" name="role" value="admin">
-                        <button class="btn btn-sm btn-info" type="submit">Set to Admin</button>
+                        <button class="btn btn-sm btn-info" type="submit">
+                          <?= lang('Home.setAdmin'); ?>
+                        </button>
                       </form>
 
                     <?php else : ?>
@@ -65,10 +61,17 @@
                         <?= csrf_field(); ?>
 
                         <input type="hidden" name="role" value="user">
-                        <button class="btn btn-sm btn-success" type="submit">Set to Regular User</button>
+                        <button class="btn btn-sm btn-success" type="submit">
+                          <?= lang('Home.setUser'); ?>
+                        </button>
                       </form>
 
                     <?php endif; ?>
+
+                  <?php else : ?>
+                    <span class="text-uppercase badge bg-secondary">
+                      <?= lang('Admin.currentUser'); ?>
+                    </span>
                   <?php endif; ?>
 
                 </td>

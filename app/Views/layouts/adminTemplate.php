@@ -53,69 +53,69 @@
 
           <?php if (in_groups('admin')) : ?>
             <li class="sidebar-header">
-              Administrator
+              <?= lang('Admin.nav.admin'); ?>
             </li>
             <li class="sidebar-item <?= ($nav == 'product') ? 'active' : '' ?>">
               <a class="sidebar-link" href="<?= base_url('/admin/product'); ?>">
                 <i class="align-middle" data-feather="database"></i>
-                <span class="align-middle">Products</span>
+                <span class="align-middle"><?= lang('Admin.nav.products'); ?></span>
               </a>
             </li>
             <li class="sidebar-item <?= ($nav == 'category') ? 'active' : '' ?>">
               <a class="sidebar-link" href="<?= base_url('/admin/category'); ?>">
                 <i class="align-middle" data-feather="layers"></i>
-                <span class="align-middle">Categories</span>
+                <span class="align-middle"><?= lang('Admin.nav.categories'); ?></span>
               </a>
             </li>
             <li class="sidebar-item <?= ($nav == 'admin_transaction' || $nav == 'admin_international') ? 'active' : '' ?>">
               <a data-target="#admin_transaction" data-toggle="collapse" class="sidebar-link collapsed">
                 <i class="align-middle" data-feather="dollar-sign"></i>
-                <span class="align-middle">Transactions</span>
+                <span class="align-middle"><?= lang('Admin.nav.transactions'); ?></span>
               </a>
               <ul id="admin_transaction" class="sidebar-dropdown list-unstyled collapse <?= ($nav == 'admin_transaction' || $nav == 'admin_international') ? 'show' : '' ?>" data-parent="#sidebar">
                 <li class="sidebar-item <?= ($nav == 'admin_transaction') ? 'active' : '' ?>">
-                  <a class="sidebar-link" href="<?= base_url('/admin/transaction'); ?>">Domestic</a>
+                  <a class="sidebar-link" href="<?= base_url('/admin/transaction'); ?>"><?= lang('Admin.nav.domestic'); ?></a>
                 </li>
                 <li class="sidebar-item <?= ($nav == 'admin_international') ? 'active' : '' ?>">
-                  <a class="sidebar-link" href="<?= base_url('/admin/international'); ?>">International</a>
+                  <a class="sidebar-link" href="<?= base_url('/admin/international'); ?>"><?= lang('Admin.nav.international'); ?></a>
                 </li>
               </ul>
             </li>
             <li class="sidebar-item <?= ($nav == 'user') ? 'active' : '' ?>">
               <a class="sidebar-link" href="<?= base_url('/admin/user'); ?>">
                 <i class="align-middle" data-feather="users"></i>
-                <span class="align-middle">User Managment</span>
+                <span class="align-middle"><?= lang('Admin.nav.userManage'); ?></span>
               </a>
             </li>
           <?php endif; ?>
 
           <li class="sidebar-header">
-            User
+            <?= lang('Admin.nav.user'); ?>
           </li>
           <li class="sidebar-item <?= ($nav == 'profile') ? 'active' : '' ?>">
             <a class="sidebar-link" href="<?= base_url('/profile'); ?>">
               <i class="align-middle" data-feather="user"></i>
-              <span class="align-middle">Profil</span>
+              <span class="align-middle"><?= lang('Admin.nav.profile'); ?></span>
             </a>
           </li>
           <li class="sidebar-item <?= ($nav == 'user_transaction' || $nav == 'user_international') ? 'active' : '' ?>">
             <a data-target="#user_transaction" data-toggle="collapse" class="sidebar-link collapsed">
               <i class="align-middle" data-feather="maximize-2"></i>
-              <span class="align-middle">My Transactions</span>
+              <span class="align-middle"><?= lang('Admin.nav.myTransactions'); ?></span>
             </a>
             <ul id="user_transaction" class="sidebar-dropdown list-unstyled collapse <?= ($nav == 'user_transaction' || $nav == 'user_international') ? 'show' : '' ?>" data-parent="#sidebar">
               <li class="sidebar-item <?= ($nav == 'user_transaction') ? 'active' : '' ?>">
-                <a class="sidebar-link" href="<?= base_url('/profile/transaction'); ?>">Domestic</a>
+                <a class="sidebar-link" href="<?= base_url('/profile/transaction'); ?>"><?= lang('Admin.nav.domestic'); ?></a>
               </li>
               <li class="sidebar-item <?= ($nav == 'user_international') ? 'active' : '' ?>">
-                <a class="sidebar-link" href="<?= base_url('/profile/international'); ?>">International</a>
+                <a class="sidebar-link" href="<?= base_url('/profile/international'); ?>"><?= lang('Admin.nav.international'); ?></a>
               </li>
             </ul>
           </li>
           <li class="sidebar-item <?= ($nav == 'settings') ? 'active' : '' ?>">
             <a class="sidebar-link" href="<?= base_url('/profile/settings'); ?>">
               <i class="align-middle" data-feather="settings"></i>
-              <span class="align-middle">Settings</span>
+              <span class="align-middle"><?= lang('Admin.nav.settings'); ?></span>
             </a>
           </li>
 
@@ -129,6 +129,11 @@
           <i class="hamburger align-self-center"></i>
         </a>
 
+        <div class="btn-group ml-3">
+          <a href="<?= base_url('lang/id') ?>" class="<?= session()->get('lang') == 'id' ? 'active' : '' ?> btn btn-outline-secondary">ID</a>
+          <a href="<?= base_url('lang/en') ?>" class="<?= session()->get('lang') == 'en' ? 'active' : '' ?> btn btn-outline-secondary">EN</a>
+        </div>
+
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
@@ -137,19 +142,19 @@
               </a>
 
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                <span class="text-dark">Welcome Back, <?= user()->firstname; ?></span>
+                <span class="text-dark"><?= lang('Admin.welcome'); ?>, <?= user()->username; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="<?= base_url('/profile'); ?>">
-                  <i class="align-middle mr-1" data-feather="user"></i> Profile
+                  <i class="align-middle mr-1" data-feather="user"></i> <?= lang('Admin.nav.profile'); ?>
                 </a>
                 <a class="dropdown-item" href="<?= base_url('/profile/settings'); ?>">
-                  <i class="align-middle mr-1" data-feather="settings"></i> Settings
+                  <i class="align-middle mr-1" data-feather="settings"></i> <?= lang('Admin.nav.settings'); ?>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= base_url(); ?>">Kembali ke Website</a>
+                <a class="dropdown-item" href="<?= base_url(); ?>"><?= lang('Admin.nav.backWebsite'); ?></a>
                 <button class="dropdown-item" type="button" data-toggle="modal" data-target="#logoutModal">
-                  Log out
+                  <?= lang('Admin.nav.logout'); ?>
                 </button>
               </div>
             </li>
@@ -162,22 +167,22 @@
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">LOGOUT</h5>
+              <h5 class="modal-title"><?= lang('Admin.logout'); ?></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body m-3">
               <p class="mb-0 text-center h2">
-                Are you sure ?
+                <?= lang('Admin.areYouSure'); ?>
               </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Cancel
+                <?= lang('Admin.cancel'); ?>
               </button>
               <a type="button" class="btn btn-danger" href="<?= base_url('/logout') ?>">
-                Logout
+                <?= lang('Admin.logout'); ?>
               </a>
             </div>
           </div>

@@ -19,7 +19,7 @@ class AdminUser extends BaseController
     // $this->userModel->changeUserGroup($this->userModel->find(2), 'admin');
 
     $data = [
-      'title' => 'Data User',
+      'title' => lang('Admin.dataUser'),
       'nav' => 'user',
       'users' => $this->userModel->findAll(),
     ];

@@ -60,7 +60,7 @@ class AdminInternational extends BaseController
 
     $data = [
       'nav' => 'admin_international',
-      'title' => 'User International Transaction',
+      'title' => lang('Admin.dataInter'),
       'transactions' => $transactions,
     ];
 
@@ -76,7 +76,7 @@ class AdminInternational extends BaseController
     $detail = $this->getTransactionDetail($transaction);
 
     $data = [
-      'title' => 'Detail Transaction',
+      'title' => lang('Admin.detailTransaction'),
       'nav' => 'admin_international',
       'validation' => \Config\Services::validation(),
       'transaction' => $transaction,
@@ -104,13 +104,13 @@ class AdminInternational extends BaseController
 
     $transaction = $this->internatioanalTransactionModel->find($this->request->getVar('transaction_id'));
     if ($transaction['status'] != 'Waiting Approvement') {
-      session()->setFlashdata('error', 'Dont Need Invoice');
+      session()->setFlashdata('error', lang('Admin.dontNeedInvoice'));
       return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
     }
 
     $invoice = $this->getInvoiceFile($this->request->getFile('invoice'), $transaction);
     if (!$invoice) {
-      session()->setFlashdata('error', 'Upload Failed');
+      session()->setFlashdata('error', lang('Admin.uploadFailed'));
       return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
     }
 
@@ -120,7 +120,7 @@ class AdminInternational extends BaseController
       'status' => 'Waiting Payment'
     ]);
 
-    session()->setFlashdata('success', 'Invoice Updated');
+    session()->setFlashdata('success', lang('Admin.invoiceUpdated'));
 
     return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
   }
@@ -140,13 +140,13 @@ class AdminInternational extends BaseController
 
     $transaction = $this->internatioanalTransactionModel->find($this->request->getVar('transaction_id'));
     if ($transaction['status'] != 'Checking Payment') {
-      session()->setFlashdata('error', 'Dont Need Reciept');
+      session()->setFlashdata('error', lang('Admin.dontNeedReciept'));
       return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
     }
 
     $reciept = $this->getRecieptFile($this->request->getFile('reciept'), $transaction);
     if (!$reciept) {
-      session()->setFlashdata('error', 'Upload Failed');
+      session()->setFlashdata('error', lang('Admin.uploadFailed'));
       return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
     }
 
@@ -156,7 +156,7 @@ class AdminInternational extends BaseController
       'status' => 'On Delivery'
     ]);
 
-    session()->setFlashdata('success', 'Reciept Updated');
+    session()->setFlashdata('success', lang('Admin.recieptUpdated'));
 
     return redirect()->to('/admin/international/' . $this->request->getVar('transaction_id'));
   }
@@ -207,7 +207,7 @@ class AdminInternational extends BaseController
     switch ($transaction['status']) {
       case 'Challenge by FDS':
         return [
-          'pesan' => 'The order has challenge by FDS, please try to reorder, or call the customer service',
+          'pesan' => lang('Admin.chalangeMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -215,7 +215,7 @@ class AdminInternational extends BaseController
         break;
       case 'On Delivery':
         return [
-          'pesan' => 'The order is on delivery to your place',
+          'pesan' => lang('Admin.onDeliveryMsg'),
           'pdf' => '',
           'badge' => 'success',
           'bill' => '',
@@ -223,7 +223,7 @@ class AdminInternational extends BaseController
         break;
       case 'Success':
         return [
-          'pesan' => 'The order is on proccessing',
+          'pesan' => lang('Admin.successMsg'),
           'pdf' => $transaction['pdf_url'] ?? '',
           'badge' => 'primary',
           'bill' => '',
@@ -231,7 +231,7 @@ class AdminInternational extends BaseController
         break;
       case 'Settlement':
         return [
-          'pesan' => 'The order has been paid for and will be processed soon. We have sent the detail to your email, please check your email',
+          'pesan' => lang('Admin.settlementMsg'),
           'badge' => 'success',
           'bill' => '/download/' . $transaction['id'],
           'pdf' => '',
@@ -239,7 +239,7 @@ class AdminInternational extends BaseController
         break;
       case 'Waiting Approvement':
         return [
-          'pesan' => 'The order is stil waiting an approvement from the store',
+          'pesan' => lang('Admin.waitApprove'),
           'badge' => 'info',
           'bill' => '',
           'pdf' => '',
@@ -247,7 +247,7 @@ class AdminInternational extends BaseController
         break;
       case 'Waiting Payment':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately',
+          'pesan' => lang('Admin.waitingPay'),
           'badge' => 'warning',
           'bill' => '',
           'pdf' => '',
@@ -255,7 +255,7 @@ class AdminInternational extends BaseController
         break;
       case 'Checking Payment':
         return [
-          'pesan' => 'The order is waiting for payment check',
+          'pesan' => lang('Admin.checkPay'),
           'badge' => 'primary',
           'bill' => '',
           'pdf' => '',
@@ -263,7 +263,7 @@ class AdminInternational extends BaseController
         break;
       case 'Pending':
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.pendingMsg'),
           'pdf' => $transaction['pdf_url'],
           'badge' => 'warning',
           'bill' => '',
@@ -271,7 +271,7 @@ class AdminInternational extends BaseController
         break;
       case 'Denied':
         return [
-          'pesan' => 'The order has been denied, please try to reorder or contact the customer service',
+          'pesan' => lang('Admin.deniedMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -279,7 +279,7 @@ class AdminInternational extends BaseController
         break;
       case 'Expire':
         return [
-          'pesan' => 'The order has expired because it has passed the payment deadline',
+          'pesan' => lang('Admin.expireMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -287,7 +287,7 @@ class AdminInternational extends BaseController
         break;
       case 'Canceled':
         return [
-          'pesan' => 'The order has been cancelled',
+          'pesan' => lang('Admin.cancelMsg'),
           'badge' => 'danger',
           'pdf' => '',
           'bill' => '',
@@ -296,7 +296,7 @@ class AdminInternational extends BaseController
 
       default:
         return [
-          'pesan' => 'The order is waiting to be paid, please pay immediately using the payment method you choose',
+          'pesan' => lang('Admin.defaultMsg'),
           'badge' => 'info',
           'pdf' => $transaction['pdf_url'] ?? '',
           'bill' => '',

@@ -75,7 +75,7 @@ class International extends BaseController
       'international_stock' => $product['international_stock'] - 1
     ]);
 
-    session()->setFlashdata('success', 'Order Successfull');
+    session()->setFlashdata('success', lang('Admin.orderSuccess'));
 
     return redirect()->to('/profile/international');
   }
@@ -95,13 +95,13 @@ class International extends BaseController
 
     $transaction = $this->internatioanalTransactionModel->find($this->request->getVar('transaction_id'));
     if ($transaction['status'] != 'Waiting Payment') {
-      session()->setFlashdata('error', 'Dont Need Payment');
+      session()->setFlashdata('error', lang('Admin.dontNeedPayment'));
       return redirect()->to('/profile/international/' . $this->request->getVar('transaction_id'));
     }
 
     $payment = $this->getPaymentFile($this->request->getFile('payment'), $transaction);
     if (!$payment) {
-      session()->setFlashdata('error', 'Upload Failed');
+      session()->setFlashdata('error', lang('Admin.uploadFailed'));
       return redirect()->to('/profile/international/' . $this->request->getVar('transaction_id'));
     }
 
@@ -111,7 +111,7 @@ class International extends BaseController
       'status' => 'Checking Payment'
     ]);
 
-    session()->setFlashdata('success', 'Payment Updated');
+    session()->setFlashdata('success', lang('Admin.paymentUpdated'));
 
     return redirect()->to('/profile/international/' . $this->request->getVar('transaction_id'));
   }

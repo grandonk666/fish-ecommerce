@@ -15,7 +15,9 @@
             <?= csrf_field(); ?>
 
             <div class="form-group row mb-3">
-              <label for="name" class="col-form-label col-sm-3">Name</label>
+              <label for="name" class="col-form-label col-sm-3">
+                <?= lang('Admin.name'); ?>
+              </label>
               <div class="col-sm-9">
                 <input type="text" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : ''; ?>" id="name" name="name" value="<?= old('name', $product['name']); ?>">
                 <div class="invalid-feedback">
@@ -25,10 +27,12 @@
             </div>
 
             <div class="form-group row mb-3">
-              <label for="category" class="col-sm-3 col-form-label">Category</label>
+              <label for="category" class="col-sm-3 col-form-label">
+                <?= lang('Admin.category'); ?>
+              </label>
               <div class="col-sm-9">
                 <select class="form-select <?= ($validation->hasError('category')) ? 'is-invalid' : ''; ?>" name="category" id="category">
-                  <option value="">Select Category</option>
+                  <option value=""><?= lang('Admin.selectCategory'); ?></option>
                   <?php foreach ($categories as $category) : ?>
                     <?php if (old('category', $product['category_id']) == $category['id']) : ?>
                       <option selected value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
@@ -44,7 +48,9 @@
             </div>
 
             <div class="form-group row mb-3">
-              <label for="price" class="col-form-label col-sm-3">Price</label>
+              <label for="price" class="col-form-label col-sm-3">
+                <?= lang('Admin.price'); ?>
+              </label>
               <div class="col-sm-9">
                 <input type="number" class="form-control <?= ($validation->hasError('price')) ? 'is-invalid' : ''; ?>" id="price" name="price" value="<?= old('price', $product['price']); ?>">
                 <div class="invalid-feedback">
@@ -54,7 +60,9 @@
             </div>
 
             <div class="form-group row mb-3">
-              <label for="domestic_stock" class="col-form-label col-sm-3">Domestic Stock</label>
+              <label for="domestic_stock" class="col-form-label col-sm-3">
+                <?= lang('Admin.domesticStock'); ?>
+              </label>
               <div class="col-sm-9">
                 <div class="input-group">
                   <input type="number" class="form-control <?= ($validation->hasError('domestic_stock')) ? 'is-invalid' : ''; ?>" id="domestic_stock" name="domestic_stock" value="<?= old('domestic_stock', $product['domestic_stock']); ?>">
@@ -67,7 +75,9 @@
             </div>
 
             <div class="form-group row mb-3">
-              <label for=international_stock" class="col-form-label col-sm-3">International Stock</label>
+              <label for=international_stock" class="col-form-label col-sm-3">
+                <?= lang('Admin.interStock'); ?>
+              </label>
               <div class="col-sm-9">
                 <div class="input-group">
                   <input type="number" class="form-control <?= ($validation->hasError('international_stock')) ? 'is-invalid' : ''; ?>" id="international_stock" name="international_stock" value="<?= old('international_stock', $product['international_stock']); ?>">
@@ -90,7 +100,9 @@
                 </div>
               <?php endif; ?>
 
-              <label for="image" class="col-form-label col-sm-3">Image</label>
+              <label for="image" class="col-form-label col-sm-3">
+                <?= lang('Admin.image'); ?>
+              </label>
               <div class="col-sm-9">
                 <input onchange="previewImg();" name="image" class="img-input form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" type="file">
                 <div class="invalid-feedback">
@@ -111,8 +123,12 @@
 
             <div class="form-group row mt-4 justify-content-end">
               <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a class="btn btn-warning" href="<?= base_url('/admin/product'); ?>">Cancel</a>
+                <button type="submit" class="btn btn-primary">
+                  <?= lang('Admin.save'); ?>
+                </button>
+                <a class="btn btn-warning" href="<?= base_url('/admin/product'); ?>">
+                  <?= lang('Admin.cancel'); ?>
+                </a>
               </div>
             </div>
           </form>

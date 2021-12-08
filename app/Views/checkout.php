@@ -6,9 +6,9 @@
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.2); padding: 15em 0;">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-10 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>">Home</a></span> <span>Checkout</span>
+        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>"><?= lang('Home.nav.home'); ?></a></span> <span><?= lang('Home.nav.checkout'); ?></span>
         </p>
-        <h1 class="mb-0 display-3 text-light">Checkout</h1>
+        <h1 class="mb-0 display-3 text-light"><?= lang('Home.nav.checkout'); ?></h1>
       </div>
     </div>
   </div>
@@ -19,12 +19,12 @@
 
     <div class="row justify-content-center">
       <div class="col-xl-7 ftco-animate">
-        <h3 class="mb-4 billing-heading">Delivery Information</h3>
+        <h3 class="mb-4 billing-heading"><?= lang('Home.deliveryInfo'); ?></h3>
 
         <div class="row align-items-end">
           <div class="col-md-12">
             <div class="form-group" id="address-section">
-              <label for="address">Detail Address</label>
+              <label for="address"><?= lang('Home.detailAddress'); ?></label>
               <input type="text" name="address" required class="form-control" style="color:black !important" id="address" value="<?= old('address') ?>">
             </div>
           </div>
@@ -32,9 +32,9 @@
           <div class="w-100"></div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="province_list">Province</label>
+              <label for="province_list"><?= lang('Home.province'); ?></label>
               <select name="province_list" id="province_list" required class="form-control" style="color:black !important">
-                <option value=""> -- Select Province -- </option>
+                <option value=""> -- <?= lang('Home.selectProvince'); ?> -- </option>
                 <?php foreach ($listProvince as $province) : ?>
                   <option value="<?= $province['province_id'] ?>__<?= $province['province'] ?>">
                     <?= $province['province']; ?>
@@ -45,16 +45,16 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="city_list">City</label>
+              <label for="city_list"><?= lang('Home.city'); ?></label>
               <select required name="city_list" id="city_list" class="form-control" style="color:black !important">
-                <option value=""> -- Select City -- </option>
+                <option value=""> -- <?= lang('Home.selectCity'); ?> -- </option>
               </select>
             </div>
           </div>
           <div class="w-100"></div>
           <div class="col-md-12">
             <div class="form-group" id="postal-section">
-              <label for="code">Postal Code</label>
+              <label for="code"><?= lang('Home.postCode'); ?></label>
               <input type="text" name="code" required class="form-control" style="color:black !important" id="code" value="<?= old('code') ?>">
             </div>
           </div>
@@ -66,31 +66,31 @@
 
           <div class="col-md-12">
             <div class="form-group" id="delivery-section">
-              <label for="delivery">Delivery Option</label>
+              <label for="delivery"><?= lang('Home.deliveryOpt'); ?></label>
               <select name="delivery" id="delivery" required class="form-control" style="color:black !important">
-                <option value=""> -- Select Delivery Option -- </option>
+                <option value=""> -- <?= lang('Home.selectDeliveryOpt'); ?> -- </option>
               </select>
             </div>
           </div>
 
           <div class="col-md-12 d-flex mb-3">
             <div class="cart-detail cart-total p-3 p-md-4">
-              <h3 class="billing-heading mb-4">Cart Total</h3>
+              <h3 class="billing-heading mb-4"><?= lang('Home.cartTotal'); ?></h3>
 
               <div id="checkout_detail">
                 <p class="d-flex">
-                  <span>Subtotal</span>
+                  <span><?= lang('Home.subtotal'); ?></span>
                   <span><?= $subtotal; ?></span>
                 </p>
               </div>
               <hr>
               <p class="d-flex total-price">
-                <span>Total</span>
+                <span><?= lang('Home.total'); ?></span>
                 <span class="total"><?= $subtotal; ?></span>
               </p>
 
               <button class="btn btn-primary py-3 px-4" id="pay-btn" type="button">
-                Place Order
+                <?= lang('Home.placeOrder'); ?>
               </button>
             </div>
           </div>

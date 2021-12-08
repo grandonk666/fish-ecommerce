@@ -20,13 +20,13 @@
         </p>
 
         <p class="h5">
-          Stock : <strong><?= $product['domestic_stock']; ?></strong>
+          <?= lang('Home.stock'); ?> : <strong><?= $product['domestic_stock']; ?></strong>
         </p>
 
         <div id="cart-section">
 
           <?php if ($product['in_cart']) : ?>
-            <h5>Already In Cart</h5>
+            <h5><?= lang('Home.alreadyCart'); ?></h5>
           <?php elseif (!$product['in_cart'] && $product['domestic_stock'] > 0) : ?>
 
             <form action="<?= base_url('/cart') ?>" method="POST" id="add-to-cart">
@@ -50,13 +50,13 @@
               </div>
               <p>
                 <button type="submit" class="btn btn-black py-3 px-5">
-                  Add to Cart
+                  <?= lang('Home.addCart'); ?>
                 </button>
               </p>
             </form>
 
           <?php else : ?>
-            <h5>Out Of Stock</h5>
+            <h5><?= lang('Home.outStock'); ?></h5>
           <?php endif; ?>
         </div>
       </div>
@@ -70,9 +70,9 @@
   <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
       <div class="col-md-12 heading-section text-center ftco-animate">
-        <span class="subheading">Latest Products</span>
-        <h2 class="mb-4">Our Products</h2>
-        <p>Solusi Menyediakan Hidangan Rumah Dalam Waktu Singkat</p>
+        <span class="subheading"><?= lang('Home.latestProducts'); ?></span>
+        <h2 class="mb-4"><?= lang('Home.ourProducts'); ?></h2>
+        <p><?= lang('Home.perfectSolution'); ?></p>
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
                   <div class="m-auto d-flex">
                     <form>
                       <button onclick="addToCart(<?= $product['id']; ?>);" type="button" class="buy-now d-flex justify-content-center align-items-center mx-1 ">
-                        <span><i class="ion-ios-cart"></i> Add To Cart</span>
+                        <span><i class="ion-ios-cart"></i><?= lang('Home.addStock'); ?></span>
                         </a>
                     </form>
                   </div>

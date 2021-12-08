@@ -9,7 +9,9 @@
     <div class="col-12 col-lg-12 col-xxl-9">
       <div class="row">
         <div class="col-md-3">
-          <a href="<?= base_url('/admin/product/create') ?>" class="btn btn-primary mb-3 d-block"><i data-feather="plus"></i>Add Product</a>
+          <a href="<?= base_url('/admin/product/create') ?>" class="btn btn-primary mb-3 d-block"><i data-feather="plus"></i>
+            <?= lang('Admin.addNew'); ?>
+          </a>
         </div>
       </div>
 
@@ -29,11 +31,11 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Domestic Stock</th>
-              <th>International Stock</th>
-              <th>Action</th>
+              <th><?= lang('Admin.name'); ?></th>
+              <th><?= lang('Admin.category'); ?></th>
+              <th><?= lang('Admin.domesticStock'); ?></th>
+              <th><?= lang('Admin.interStock'); ?></th>
+              <th><?= lang('Admin.action'); ?></th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +45,7 @@
                 <td>
                   <strong><?= $product['category']['name']; ?></strong>
                 </td>
-                <td><?= $product['domestic_stock'] > 0 ? $product['domestic_stock'] . ' pcs' : 'out of stock'; ?></td>
+                <td><?= $product['domestic_stock'] > 0 ? $product['domestic_stock'] . ' kg' : 'out of stock'; ?></td>
                 <td><?= $product['international_stock'] > 0 ? $product['international_stock'] . ' container' : 'out of stock'; ?></td>
                 <td class="table-action">
                   <a href="<?= base_url("/admin/product/edit/" . $product['id']); ?>" class="btn btn-outline"><i class="align-middle" data-feather="edit-2"></i></a>

@@ -15,7 +15,9 @@
             <?= csrf_field(); ?>
 
             <div class="form-group row mb-3">
-              <label for="name" class="col-form-label col-sm-3">Name</label>
+              <label for="name" class="col-form-label col-sm-3">
+                <?= lang('Admin.name'); ?>
+              </label>
               <div class="col-sm-9">
                 <input type="text" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : ''; ?>" id="name" name="name" value="<?= old('name'); ?>">
                 <div class="invalid-feedback">
@@ -29,7 +31,9 @@
                 <img height="120" width="120" class="img-preview mb-2 border border-dark" style="object-fit: cover;">
               </div>
 
-              <label for="image" class="col-form-label col-sm-3">Image</label>
+              <label for="image" class="col-form-label col-sm-3">
+                <?= lang('Admin.image'); ?>
+              </label>
               <div class="col-sm-9">
                 <input onchange="previewImg();" name="image" class="img-input form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" type="file">
                 <div class="invalid-feedback">
@@ -40,8 +44,12 @@
 
             <div class="form-group row mt-4 justify-content-end">
               <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary">Add</button>
-                <a class="btn btn-warning" href="<?= base_url('/admin/category'); ?>">Cancel</a>
+                <button type="submit" class="btn btn-primary">
+                  <?= lang('Admin.add'); ?>
+                </button>
+                <a class="btn btn-warning" href="<?= base_url('/admin/category'); ?>">
+                  <?= lang('Admin.cancel'); ?>
+                </a>
               </div>
             </div>
           </form>

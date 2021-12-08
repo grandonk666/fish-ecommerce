@@ -200,7 +200,7 @@ class Checkout extends BaseController
 
     $this->cart->destroy();
 
-    session()->setFlashdata('success', 'Order Successfull');
+    session()->setFlashdata('success', lang('Admin.orderSuccess'));
 
     return redirect()->to('/profile/transaction');
   }

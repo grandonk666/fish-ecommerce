@@ -40,7 +40,10 @@ class Cart extends BaseController
       'qty'     => $this->request->getVar('quantity'),
       'price'   => $product['price'],
       'name'    => $product['name'],
-      'options' => ['image' => $product['image']]
+      'options' => [
+        'image' => $product['image'],
+        'domestic_stock' => $product['domestic_stock']
+      ]
     ));
 
     return $this->response->setStatusCode(200, 'Added to cart');

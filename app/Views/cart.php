@@ -6,9 +6,9 @@
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.2); padding: 15em 0;">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-10 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>">Home</a></span> <span>Cart</span>
+        <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url() ?>"><?= lang('Home.nav.home'); ?></a></span> <span><?= lang('Home.nav.cart'); ?></span>
         </p>
-        <h1 class="mb-0 display-3 text-light">Cart</h1>
+        <h1 class="mb-0 display-3 text-light"><?= lang('Home.nav.cart'); ?></h1>
       </div>
     </div>
   </div>
@@ -24,10 +24,10 @@
               <tr class="text-center">
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
-                <th>Product name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
+                <th><?= lang('Home.productName'); ?></th>
+                <th><?= lang('Home.price'); ?></th>
+                <th><?= lang('Home.quantity'); ?></th>
+                <th><?= lang('Home.total'); ?></th>
               </tr>
             </thead>
             <tbody>
@@ -63,9 +63,9 @@
                         <input type="hidden" name="rowid" value="<?= $product['rowid']; ?>">
 
                         <div class="input-group mb-3">
-                          <input type="number" name="quantity" class="quantity form-control input-number" value="<?= $product['qty']; ?>" min="1" max="100">
+                          <input type="number" name="quantity" class="quantity form-control input-number" value="<?= $product['qty']; ?>" min="1" max="<?= $product['options']['domestic_stock']; ?>">
                         </div>
-                        <button type="submit" class="btn btn-primary py-2">Save</button>
+                        <button type="submit" class="btn btn-primary py-2"><?= lang('Home.save'); ?></button>
                       </form>
                     </td>
 
@@ -79,7 +79,7 @@
               <?php else : ?>
                 <tr class="text-center">
                   <td class="product-name">
-                    <h4>Cart Empty</h4>
+                    <h4><?= lang('Home.cartEmpty'); ?></h4>
                   </td>
                 </tr>
               <?php endif; ?>
@@ -92,16 +92,16 @@
     <div class="row justify-content-end">
       <div class="col-lg-5 mt-5 cart-wrap ftco-animate">
         <div class="cart-total mb-3">
-          <h3>Cart Totals</h3>
+          <h3><?= lang('Home.cartTotal'); ?></h3>
           <p class="d-flex">
-            <span>Subtotal</span>
+            <span><?= lang('Home.subtotal'); ?></span>
             <span class="text-right">
               Rp <?= number_format($subtotal, 0, ',', '.') ?>
             </span>
           </p>
           <hr>
           <p class="d-flex total-price">
-            <span>Total</span>
+            <span><?= lang('Home.total'); ?></span>
             <span class="text-right">
               Rp <?= number_format($subtotal, 0, ',', '.') ?>
             </span>
@@ -109,7 +109,7 @@
         </div>
         <p class="text-center">
           <a href="<?= base_url('/checkout') ?>" class="btn btn-primary py-3 px-4">
-            Proceed to Checkout
+            <?= lang('Home.proceedCheckout'); ?>
           </a>
         </p>
       </div>
