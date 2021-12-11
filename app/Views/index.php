@@ -10,9 +10,11 @@
         <h2 class="subheading mb-4 text-light">
           <?= lang('Home.weDeliver'); ?>
         </h2>
-        <p><a href="3" class="btn btn-primary">
+        <p>
+          <a href="<?= base_url('/product') ?>" class="btn btn-primary">
             <?= lang('Home.shopNow'); ?>
-          </a></p>
+          </a>
+        </p>
       </div>
     </div>
   </div>

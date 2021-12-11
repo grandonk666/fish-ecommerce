@@ -39,7 +39,7 @@ class Product extends BaseController
     $latestProducts = array_map(function ($product) {
       $product['in_cart'] = $this->isInCart($product['id']);
       return $product;
-    }, $this->productModel->limit(5)->findAll());
+    }, $this->productModel->orderBy('id', 'DESC')->findAll(4));
 
     $data = [
       'product' => $product,

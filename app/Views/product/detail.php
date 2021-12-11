@@ -83,7 +83,7 @@
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="product">
             <a href="<?= base_url('/product/' . $product['slug']) ?>" class="img-prod">
-              <img class="img-fluid" src="<?= base_url('/images/product-images/' . $product['image']) ?>" alt="<?= $product['name']; ?>" style="min-height:260px;max-height:260px;width:100%;">
+              <img class="img-fluid img" src="<?= base_url('/images/product-images/' . $product['image']) ?>" alt="<?= $product['name']; ?>" style="min-height:260px;max-height:260px;width:100%;">
               <div class="overlay"></div>
             </a>
 
