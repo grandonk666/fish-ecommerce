@@ -36,7 +36,7 @@ return [
   'domestic' => 'Domestic (IDN)',
   'international' => 'International',
   'about' => 'About',
-  'welcomeTo' => 'Welcome to CV INDONESIA NATURE MIRACLE',
+  'welcomeTo' => 'Welcome to FISHOP',
   'productName' => 'Product Name',
   'price' => 'Price',
   'quantity' => 'Quantity',

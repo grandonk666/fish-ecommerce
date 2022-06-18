@@ -38,7 +38,7 @@ class Home extends BaseController
       $transaction['user'] = $this->userModel->find($transaction['user_id']);
 
       $data = [
-        'title' => 'Bill | CV INDONESIA NATURE MIRACLE',
+        'title' => 'Bill | FISHOP',
         'transaction' => $transaction,
       ];
 
@@ -47,7 +47,7 @@ class Home extends BaseController
       $dompdf->setPaper('A4');
       $dompdf->render();
       ob_end_clean();
-      $dompdf->stream('CV INDONESIA NATURE MIRACLE | Bill', array("Attachment" => true));
+      $dompdf->stream('FISHOP | Bill', array("Attachment" => true));
       return;
     }
 

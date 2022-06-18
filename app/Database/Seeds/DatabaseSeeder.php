@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user = new User([
-            'username' => 'trikurniawan',
-            'firstname' => 'Tri',
-            'lastname' => 'Kurniawan',
-            'email' => 'trikurniawan02091998@gmail.com',
+            'username' => 'admin',
+            'firstname' => 'Super',
+            'lastname' => 'Admin',
+            'email' => '18081010095.c@gmail.com',
             'phone' => '081234567890',
-            'password' => 'Trikurniawan1927',
+            'password' => 'Grandonk666',
         ]);
         $user->activate();
         $users = model('UserModel');

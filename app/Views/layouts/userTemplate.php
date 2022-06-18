@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>CV INDONESIA NATURE MIRACLE (Hanya Untuk Pengujian)</title>
+  <title>FISHOP (Hanya Untuk Pengujian)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -16,14 +16,14 @@
   <meta name="msapplication-config" content="<?= base_url('/icons/browserconfig.xml') ?>">
   <meta name="theme-color" content="#ffffff">
 
-  <meta name="apple-mobile-web-app-title" content="CV INDONESIA NATURE MIRACLE">
-  <meta name="application-name" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="apple-mobile-web-app-title" content="FISHOP">
+  <meta name="application-name" content="FISHOP">
   <meta name="keywords" content="food, fish, seafood">
-  <meta property="og:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
-  <meta name="twitter:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
-  <meta name="description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
-  <meta property="og:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
-  <meta name="twitter:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta property="og:title" content="FISHOP | Fresh Fish And Seafoods">
+  <meta name="twitter:title" content="FISHOP | Fresh Fish And Seafoods">
+  <meta name="description" content="FISHOP is a place to get fresh and high quality fish">
+  <meta property="og:description" content="FISHOP is a place to get fresh and high quality fish">
+  <meta name="twitter:description" content="FISHOP is a place to get fresh and high quality fish">
   <meta name="image" content="<?= base_url('/images/bg_1.jpg') ?>">
   <meta property="og:image" content="<?= base_url('/images/bg_1.jpg') ?>">
   <meta name="twitter:image" content="<?= base_url('/images/bg_1.jpg') ?>">
@@ -31,7 +31,7 @@
   <meta name="twitter:site" content="@site">
   <meta name="twitter:creator" content="@handle">
   <meta property="og:url" content="">
-  <meta property="og:site_name" content="CV INDONESIA NATURE MIRACLE">
+  <meta property="og:site_name" content="FISHOP">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -95,13 +95,13 @@
               <div class="icon mr-2 d-flex justify-content-center align-items-center">
                 <span class="icon-phone2"></span>
               </div>
-              <span class="text">+62 812-9163-4919</span>
+              <span class="text">+62 818-7336-4432</span>
             </div>
             <div class="col-md pr-4 d-flex topper align-items-center">
               <div class="icon mr-2 d-flex justify-content-center align-items-center">
                 <span class="icon-paper-plane"></span>
               </div>
-              <span class="text">trikurniawan02091998@gmail.com</span>
+              <span class="text">18081010095.c@gmail.com</span>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="<?= base_url() ?>">CV INDONESIA NATURE MIRACLE (Hanya Untuk Pengujian)</a>
+      <a class="navbar-brand" href="<?= base_url() ?>">FISHOP (Hanya Untuk Pengujian)</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -203,7 +203,7 @@
       <div class="row mb-4">
         <div class="col-md">
           <div class="ftco-footer-widget">
-            <h2 class="ftco-heading-2">CV INDONESIA NATURE MIRACLE</h2>
+            <h2 class="ftco-heading-2">FISHOP</h2>
             <p><?= lang('Home.perfectSolution'); ?></p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
@@ -229,7 +229,7 @@
         <div class="col-md-12">
           <div class="ftco-footer-widget py-3 border-top">
             <p class="mb-0 text-muted text-center">
-              &copy; CV INDONESIA NATURE MIRACLE 2021
+              &copy; FISHOP 2021
             </p>
           </div>
         </div>

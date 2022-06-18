@@ -16,14 +16,14 @@
   <meta name="msapplication-config" content="<?= base_url('/icons/browserconfig.xml') ?>">
   <meta name="theme-color" content="#ffffff">
 
-  <meta name="apple-mobile-web-app-title" content="CV INDONESIA NATURE MIRACLE">
-  <meta name="application-name" content="CV INDONESIA NATURE MIRACLE">
+  <meta name="apple-mobile-web-app-title" content="FISHOP">
+  <meta name="application-name" content="FISHOP">
   <meta name="keywords" content="food, fish, seafood">
-  <meta property="og:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
-  <meta name="twitter:title" content="CV INDONESIA NATURE MIRACLE | Fresh Fish And Seafoods">
-  <meta name="description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
-  <meta property="og:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
-  <meta name="twitter:description" content="CV INDONESIA NATURE MIRACLE is a place to get fresh and high quality fish">
+  <meta property="og:title" content="FISHOP | Fresh Fish And Seafoods">
+  <meta name="twitter:title" content="FISHOP | Fresh Fish And Seafoods">
+  <meta name="description" content="FISHOP is a place to get fresh and high quality fish">
+  <meta property="og:description" content="FISHOP is a place to get fresh and high quality fish">
+  <meta name="twitter:description" content="FISHOP is a place to get fresh and high quality fish">
   <meta name="image" content="<?= base_url('/images/bg_1.jpg') ?>">
   <meta property="og:image" content="<?= base_url('/images/bg_1.jpg') ?>">
   <meta name="twitter:image" content="<?= base_url('/images/bg_1.jpg') ?>">
@@ -31,7 +31,7 @@
   <meta name="twitter:site" content="@site">
   <meta name="twitter:creator" content="@handle">
   <meta property="og:url" content="">
-  <meta property="og:site_name" content="CV INDONESIA NATURE MIRACLE">
+  <meta property="og:site_name" content="FISHOP">
 
   <link href="<?= base_url('/images/favicon.png') ?>" rel="icon" />
   <link href="<?= base_url('/images/favicon.png') ?>" rel="apple-touch-icon" />
@@ -46,7 +46,7 @@
     <nav id="sidebar" class="sidebar d-print-none">
       <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="<?= base_url('/admin'); ?>">
-          <span class="text-white">CV INDONESIA NATURE MIRACLE</span>
+          <span class="text-white">FISHOP</span>
         </a>
 
         <ul class="sidebar-nav">
@@ -197,7 +197,7 @@
         <div class="container-fluid">
           <div class="row text-muted">
             <div class="col-6 text-left">
-              <p class="mb-0"><strong>CV INDONESIA NATURE MIRACLE</strong>
+              <p class="mb-0"><strong>FISHOP</strong>
                 &copy;
               </p>
             </div>

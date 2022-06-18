@@ -12,7 +12,7 @@
   <div style="width: 100%; margin: 0 auto">
     <div style="width: 100%; margin: 0; background-color: #ffffff">
       <h2 style="margin: 0; padding: 10px 0 5px 20px; font-size: 2em">
-        CV INDONESIA NATURE MIRACLE
+        FISHOP
       </h2>
       <p style="margin: 0; padding: 5px 0 5px 20px; font-size: 1.6em">
         IDR <?= number_format($transaction['total'], '0', '', '.'); ?>
@@ -121,8 +121,8 @@
             padding: 0 0 10px 0;
           ">
         email:
-        <span style="color: rgb(107, 139, 235)">trikurniawan02091998@gmail.com</span>
-        | phone: <span style="color: rgb(107, 139, 235)">+6285730187977</span>
+        <span style="color: rgb(107, 139, 235)">18081010095.c@gmail.com</span>
+        | phone: <span style="color: rgb(107, 139, 235)">+6281873364432</span>
       </p>
     </div>
   </div>
